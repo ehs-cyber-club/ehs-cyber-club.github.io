@@ -36,38 +36,43 @@
       padding: 20px;
     }
 
-    /* ===== TITLE GLOW ===== */
+    /* ===== TITLE (RED + STRONG BLUE SWEEP) ===== */
     .shimmer-title {
       font-size: clamp(3rem, 6vw, 4.8rem);
       font-weight: 900;
       letter-spacing: 2px;
 
-      /* Red text with blue glow sweep inside */
+      /* Bright red base + huge blue scan stripe */
       background: linear-gradient(
         120deg,
         #ff0000 0%,
-        #ff0000 40%,
-        #00aaff 50%,
-        #ff0000 60%,
+        #ff0000 25%,
+
+        #00ccff 42%,
+        #00ccff 50%,
+        #00ccff 58%,
+
+        #ff0000 75%,
         #ff0000 100%
       );
 
-      background-size: 250% 100%;
+      background-size: 320% 100%;
       background-position: 0% 50%;
 
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
-      /* Holy red glow + neon blue aura */
+      /* Holy red core + massive neon blue glow */
       text-shadow:
-        0 0 12px rgba(255, 0, 0, 1),
-        0 0 28px rgba(255, 0, 0, 0.85),
-        0 0 55px rgba(255, 0, 0, 0.65),
+        0 0 18px rgba(255, 0, 0, 1),
+        0 0 45px rgba(255, 0, 0, 0.85),
+        0 0 85px rgba(255, 0, 0, 0.65),
 
-        0 0 25px rgba(0, 170, 255, 0.95),
-        0 0 70px rgba(0, 170, 255, 0.6);
+        0 0 25px rgba(0, 204, 255, 1),
+        0 0 65px rgba(0, 204, 255, 0.95),
+        0 0 140px rgba(0, 204, 255, 0.8);
 
-      animation: glowSweep 4s linear infinite;
+      animation: glowSweep 3.5s linear infinite;
     }
 
     @keyframes glowSweep {
@@ -83,7 +88,7 @@
     .club-line {
       font-size: 1.25rem;
       color: #3aa7ff;
-      text-shadow: 0 0 15px rgba(58, 167, 255, 0.8);
+      text-shadow: 0 0 18px rgba(58, 167, 255, 0.9);
     }
 
     /* ===== MAIN TEXT ===== */
@@ -122,7 +127,7 @@
     button:hover {
       background: #ff3b3b;
       color: black;
-      box-shadow: 0 0 35px rgba(255, 0, 0, 0.9);
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.95);
       transform: translateY(-2px);
     }
 
@@ -182,7 +187,7 @@
 </footer>
 
 <script>
-/* ===== Neural Background ===== */
+/* ===== Neural Background Animation ===== */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
@@ -240,7 +245,7 @@ function animate() {
 }
 animate();
 
-/* ===== NAV ===== */
+/* ===== NAVIGATION ===== */
 function goJoin() {
   location.href = "join.html";
 }
