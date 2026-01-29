@@ -37,17 +37,19 @@
     }
 
     /* ================================
-       TITLE: PURE RED + PURE BLUE SWEEP
+       TITLE: TWO INDEPENDENT GLOWS
        ================================ */
-    .shimmer-title {
+    .title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .shimmer {
       font-size: clamp(3rem, 6vw, 5rem);
       font-weight: 900;
       letter-spacing: 2px;
-
-      /* BASE TEXT COLOR */
       color: #ff0000;
-
-      /* The sweep is a MASK layer, not mixed */
       position: relative;
 
       text-shadow:
@@ -57,8 +59,8 @@
     }
 
     /* BLUE SWEEP OVERLAY */
-    .shimmer-title::after {
-      content: "Welcome, Cyber Raptors";
+    .shimmer::after {
+      content: attr(data-text);
       position: absolute;
       left: 0;
       top: 0;
@@ -67,7 +69,6 @@
 
       color: #00ccff;
 
-      /* PURE BLUE STRIPE ONLY */
       clip-path: polygon(
         -30% 0%,
         -10% 0%,
@@ -83,7 +84,6 @@
       animation: sweep 3.5s linear infinite;
     }
 
-    /* Moves the stripe smoothly */
     @keyframes sweep {
       0% {
         clip-path: polygon(
@@ -176,7 +176,16 @@
 
 <div class="center">
 
-  <h1 class="shimmer-title">Welcome, Cyber Raptors</h1>
+  <!-- TWO SEPARATE GLOWS -->
+  <div class="title-wrap">
+    <div class="shimmer" data-text="Welcome">
+      Welcome
+    </div>
+
+    <div class="shimmer" data-text="Cyber Raptors">
+      Cyber Raptors
+    </div>
+  </div>
 
   <div class="club-line">
     Eagle Crest High School Cybersecurity Club
@@ -208,7 +217,7 @@
 </footer>
 
 <script>
-/* ===== Neural Background Animation ===== */
+/* ===== Background Network Animation ===== */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
@@ -243,7 +252,8 @@ function animate() {
     if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
     if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-    ctx.fillStyle = "#ff3b3b";
+    /* POINTS = BLUE */
+    ctx.fillStyle = "#00ccff";
     ctx.beginPath();
     ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
     ctx.fill();
@@ -253,7 +263,10 @@ function animate() {
       const d = Math.hypot(n.x - m.x, n.y - m.y);
 
       if (d < MAX_DIST) {
-        ctx.strokeStyle = `rgba(0,200,255,${1 - d / MAX_DIST})`;
+
+        /* LINES = RED */
+        ctx.strokeStyle = `rgba(255,0,0,${1 - d / MAX_DIST})`;
+
         ctx.beginPath();
         ctx.moveTo(n.x, n.y);
         ctx.lineTo(m.x, m.y);
