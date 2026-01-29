@@ -22,7 +22,7 @@
     canvas {
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: -2;
     }
 
     .wrapper {
@@ -30,95 +30,98 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
 
     .form-box {
       width: 100%;
-      max-width: 520px;
-      padding: 35px;
-      border-radius: 18px;
+      max-width: 540px;
+      padding: 38px;
+      border-radius: 20px;
 
-      background: rgba(0, 0, 0, 0.72);
-      border: 2px solid rgba(0, 200, 255, 0.6);
+      background: rgba(0, 0, 0, 0.78);
+      border: 2px solid rgba(0, 220, 255, 0.7);
 
       box-shadow:
-        0 0 25px rgba(0, 200, 255, 0.4),
-        0 0 55px rgba(255, 0, 0, 0.35);
+        0 0 30px rgba(0, 220, 255, 0.55),
+        0 0 70px rgba(255, 0, 0, 0.35);
 
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
       text-align: center;
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-weight: 900;
       color: #ff2b2b;
 
       text-shadow:
-        0 0 10px rgba(0, 220, 255, 0.8),
-        0 0 25px rgba(0, 220, 255, 0.5),
-        0 0 35px rgba(255, 0, 0, 0.8);
+        0 0 14px rgba(0, 240, 255, 0.95),
+        0 0 35px rgba(0, 220, 255, 0.65),
+        0 0 45px rgba(255, 0, 0, 0.9);
     }
 
     p {
       text-align: center;
       margin-top: 10px;
-      margin-bottom: 25px;
-      color: #b8dfff;
-      font-size: 1rem;
+      margin-bottom: 28px;
+      color: #b8eaff;
+      font-size: 1.05rem;
     }
 
     label {
       display: block;
       margin-top: 18px;
-      font-weight: 600;
-      color: #00ccff;
+      font-weight: 700;
+      color: #00eaff;
+      text-shadow: 0 0 10px rgba(0,220,255,0.6);
     }
 
     input, select, textarea {
       width: 100%;
-      margin-top: 6px;
-      padding: 12px;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 0, 0, 0.5);
+      margin-top: 7px;
+      padding: 13px;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 0, 0, 0.45);
       background: rgba(0, 0, 0, 0.65);
       color: white;
       font-size: 1rem;
       outline: none;
 
-      box-shadow: 0 0 12px rgba(0, 200, 255, 0.25);
-      transition: 0.2s;
+      box-shadow: 0 0 14px rgba(0, 220, 255, 0.25);
+      transition: 0.25s;
     }
 
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: #00ccff;
-      box-shadow: 0 0 18px rgba(0, 220, 255, 0.7);
+      border-color: #00f0ff;
+      box-shadow: 0 0 22px rgba(0, 240, 255, 0.85);
     }
 
     textarea {
       resize: none;
-      height: 90px;
+      height: 95px;
     }
 
     button {
       width: 100%;
-      margin-top: 28px;
-      padding: 14px;
-      border-radius: 12px;
+      margin-top: 30px;
+      padding: 15px;
+      border-radius: 14px;
       border: none;
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
       cursor: pointer;
 
-      background: linear-gradient(90deg, #ff2b2b, #00ccff);
+      background: linear-gradient(90deg, #ff2b2b, #00f0ff);
       color: black;
 
       box-shadow:
-        0 0 20px rgba(0, 220, 255, 0.6),
-        0 0 35px rgba(255, 0, 0, 0.5);
+        0 0 25px rgba(0, 240, 255, 0.75),
+        0 0 45px rgba(255, 0, 0, 0.55);
 
       transition: 0.25s;
     }
@@ -126,15 +129,22 @@
     button:hover {
       transform: translateY(-2px);
       box-shadow:
-        0 0 35px rgba(0, 220, 255, 0.9),
-        0 0 55px rgba(255, 0, 0, 0.7);
+        0 0 45px rgba(0, 240, 255, 1),
+        0 0 70px rgba(255, 0, 0, 0.75);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
     .status {
       text-align: center;
       margin-top: 18px;
       font-weight: bold;
+      font-size: 1rem;
       color: #00ffcc;
+      min-height: 22px;
     }
   </style>
 </head>
@@ -150,10 +160,10 @@
 
     <form id="applyForm">
 
-      <label>Full Name</label>
+      <label>Full Name *</label>
       <input id="full_name" required />
 
-      <label>Grade</label>
+      <label>Grade *</label>
       <select id="grade" required>
         <option value="">Select</option>
         <option>9</option>
@@ -162,7 +172,7 @@
         <option>12</option>
       </select>
 
-      <label>Email</label>
+      <label>Email *</label>
       <input id="email" type="email" required />
 
       <label>Cybersecurity Experience</label>
@@ -189,7 +199,7 @@
       <label>Why do you want to join?</label>
       <textarea id="why_join"></textarea>
 
-      <button type="submit">Submit Application</button>
+      <button id="submitBtn" type="submit">Submit Application</button>
 
       <div class="status" id="status"></div>
     </form>
@@ -211,33 +221,45 @@ const supabase = window.supabase.createClient(
 /* ===== FORM SUBMIT ===== */
 const form = document.getElementById("applyForm");
 const statusText = document.getElementById("status");
+const submitBtn = document.getElementById("submitBtn");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  statusText.style.color = "#00ffcc";
   statusText.textContent = "Submitting...";
+  submitBtn.disabled = true;
 
   const data = {
-    full_name: document.getElementById("full_name").value,
+    full_name: document.getElementById("full_name").value.trim(),
     grade: document.getElementById("grade").value,
-    email: document.getElementById("email").value,
-    experience: document.getElementById("experience").value,
+    email: document.getElementById("email").value.trim(),
+    experience: document.getElementById("experience").value.trim(),
     help_manage: document.getElementById("help_manage").value,
     meeting_day: document.getElementById("meeting_day").value,
-    why_join: document.getElementById("why_join").value
+    why_join: document.getElementById("why_join").value.trim()
   };
+
+  console.log("Submitting data:", data);
 
   const { error } = await supabase
     .from("applications1")
     .insert([data]);
 
   if (error) {
+    console.error("Supabase error:", error);
+
     statusText.style.color = "red";
     statusText.textContent = "Error: " + error.message;
+
+    alert("Submission failed:\n\n" + error.message);
   } else {
     statusText.style.color = "#00ffcc";
     statusText.textContent = "Application submitted successfully!";
     form.reset();
   }
+
+  submitBtn.disabled = false;
 });
 </script>
 
@@ -254,15 +276,15 @@ addEventListener("resize", resize);
 resize();
 
 const nodes = [];
-const NODE_COUNT = 120;
-const MAX_DIST = 160;
+const NODE_COUNT = 130;
+const MAX_DIST = 170;
 
 for (let i = 0; i < NODE_COUNT; i++) {
   nodes.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.5,
-    vy: (Math.random() - 0.5) * 0.5
+    vx: (Math.random() - 0.5) * 0.55,
+    vy: (Math.random() - 0.5) * 0.55
   });
 }
 
@@ -271,6 +293,7 @@ function animate() {
 
   for (let i = 0; i < nodes.length; i++) {
     const n = nodes[i];
+
     n.x += n.vx;
     n.y += n.vy;
 
@@ -289,7 +312,7 @@ function animate() {
       const d = Math.hypot(n.x - m.x, n.y - m.y);
 
       if (d < MAX_DIST) {
-        ctx.strokeStyle = `rgba(0,200,255,${1 - d / MAX_DIST})`;
+        ctx.strokeStyle = `rgba(0,240,255,${1 - d / MAX_DIST})`;
         ctx.beginPath();
         ctx.moveTo(n.x, n.y);
         ctx.lineTo(m.x, m.y);
