@@ -32,44 +32,45 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      gap: 20px;
-      padding: 25px;
+      gap: 22px;
+      padding: 20px;
     }
 
-    /* ===== TITLE GLOW SWEEP ===== */
+    /* ===== TITLE GLOW ===== */
     .shimmer-title {
       font-size: clamp(3rem, 6vw, 4.8rem);
       font-weight: 900;
       letter-spacing: 2px;
 
-      color: transparent;
-
+      /* Red text with blue glow sweep inside */
       background: linear-gradient(
         120deg,
-        #ff2b2b 0%,
-        #ff2b2b 35%,
-        #7df9ff 50%,
-        #ff2b2b 65%,
-        #ff2b2b 100%
+        #ff0000 0%,
+        #ff0000 40%,
+        #00aaff 50%,
+        #ff0000 60%,
+        #ff0000 100%
       );
 
-      background-size: 300% 100%;
+      background-size: 250% 100%;
       background-position: 0% 50%;
 
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
+      /* Holy red glow + neon blue aura */
       text-shadow:
-        0 0 14px rgba(255, 0, 0, 0.9),
-        0 0 35px rgba(255, 0, 0, 0.6),
-        0 0 30px rgba(125, 249, 255, 0.95),
-        0 0 70px rgba(125, 249, 255, 0.75),
-        0 0 110px rgba(125, 249, 255, 0.45);
+        0 0 12px rgba(255, 0, 0, 1),
+        0 0 28px rgba(255, 0, 0, 0.85),
+        0 0 55px rgba(255, 0, 0, 0.65),
 
-      animation: kaliGlowSweep 4s linear infinite;
+        0 0 25px rgba(0, 170, 255, 0.95),
+        0 0 70px rgba(0, 170, 255, 0.6);
+
+      animation: glowSweep 4s linear infinite;
     }
 
-    @keyframes kaliGlowSweep {
+    @keyframes glowSweep {
       0% {
         background-position: 0% 50%;
       }
@@ -81,24 +82,23 @@
     /* ===== CLUB LINE ===== */
     .club-line {
       font-size: 1.25rem;
-      font-weight: 700;
       color: #3aa7ff;
-      text-shadow: 0 0 12px rgba(58, 167, 255, 0.85);
+      text-shadow: 0 0 15px rgba(58, 167, 255, 0.8);
     }
 
-    /* ===== DESCRIPTION ===== */
-    .desc {
-      max-width: 680px;
-      font-size: 1.15rem;
-      line-height: 1.6;
+    /* ===== MAIN TEXT ===== */
+    p {
+      max-width: 650px;
+      font-size: 1.1rem;
       color: #d0d8ff;
+      line-height: 1.6;
     }
 
     /* ===== BUTTONS ===== */
     .buttons {
       display: flex;
       gap: 18px;
-      margin-top: 20px;
+      margin-top: 25px;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -111,8 +111,9 @@
       font-size: 1rem;
       cursor: pointer;
       border-radius: 10px;
-      transition: 0.25s;
+      transition: 0.2s;
       box-shadow: 0 0 18px rgba(255, 0, 0, 0.45);
+
       display: flex;
       align-items: center;
       gap: 10px;
@@ -121,7 +122,7 @@
     button:hover {
       background: #ff3b3b;
       color: black;
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.95);
+      box-shadow: 0 0 35px rgba(255, 0, 0, 0.9);
       transform: translateY(-2px);
     }
 
@@ -134,133 +135,127 @@
     /* ===== FOOTER ===== */
     footer {
       position: fixed;
-      bottom: 14px;
+      bottom: 12px;
       width: 100%;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #6a7cff;
-    }
-
-    footer b {
-      color: #ff3b3b;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
     }
   </style>
 </head>
 
 <body>
 
-  <canvas id="bg"></canvas>
+<canvas id="bg"></canvas>
 
-  <div class="center">
+<div class="center">
 
-    <h1 class="shimmer-title">Welcome, Cyber Raptors</h1>
+  <h1 class="shimmer-title">Welcome, Cyber Raptors</h1>
 
-    <div class="club-line">
-      Eagle Crest High School Cybersecurity Club
-    </div>
-
-    <p class="desc">
-      Helping students understand how digital systems work and how to protect them.
-      Open to all grades. No experience required.
-    </p>
-
-    <div class="buttons">
-      <button onclick="goJoin()">Apply to Join</button>
-
-      <button class="social" onclick="goDiscord()">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg">
-        Discord
-      </button>
-
-      <button class="social" onclick="goInstagram()">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg">
-        Instagram
-      </button>
-    </div>
-
+  <div class="club-line">
+    Eagle Crest High School Cybersecurity Club
   </div>
 
-  <footer>
-    <b>Made For Students By a Student</b>
-  </footer>
+  <p>
+    Helping kids understand how digital systems work and how to protect them.
+    Open to all grades. No experience required.
+  </p>
 
-  <script>
-    /* ===== Neural Background ===== */
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
+  <div class="buttons">
+    <button onclick="goJoin()">Apply to Join</button>
 
-    function resize() {
-      canvas.width = innerWidth;
-      canvas.height = innerHeight;
-    }
-    addEventListener("resize", resize);
-    resize();
+    <button class="social" onclick="goDiscord()">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg">
+      Discord
+    </button>
 
-    const nodes = [];
-    const NODE_COUNT = 120;
-    const MAX_DIST = 150;
+    <button class="social" onclick="goInstagram()">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg">
+      Instagram
+    </button>
+  </div>
 
-    for (let i = 0; i < NODE_COUNT; i++) {
-      nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4
-      });
-    }
+</div>
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+<footer>
+  Made For Students By a Student
+</footer>
 
-      for (let i = 0; i < nodes.length; i++) {
-        const n = nodes[i];
-        n.x += n.vx;
-        n.y += n.vy;
+<script>
+/* ===== Neural Background ===== */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
 
-        if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-        if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+addEventListener("resize", resize);
+resize();
 
-        ctx.fillStyle = "#ff3b3b";
+const nodes = [];
+const NODE_COUNT = 120;
+const MAX_DIST = 150;
+
+for (let i = 0; i < NODE_COUNT; i++) {
+  nodes.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    n.x += n.vx;
+    n.y += n.vy;
+
+    if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+    if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+    ctx.fillStyle = "#ff3b3b";
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+
+    for (let j = i + 1; j < nodes.length; j++) {
+      const m = nodes[j];
+      const d = Math.hypot(n.x - m.x, n.y - m.y);
+
+      if (d < MAX_DIST) {
+        ctx.strokeStyle = `rgba(255,0,0,${1 - d / MAX_DIST})`;
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
-        ctx.fill();
-
-        for (let j = i + 1; j < nodes.length; j++) {
-          const m = nodes[j];
-          const d = Math.hypot(n.x - m.x, n.y - m.y);
-
-          if (d < MAX_DIST) {
-            ctx.strokeStyle = `rgba(255,0,0,${1 - d / MAX_DIST})`;
-            ctx.beginPath();
-            ctx.moveTo(n.x, n.y);
-            ctx.lineTo(m.x, m.y);
-            ctx.stroke();
-          }
-        }
+        ctx.moveTo(n.x, n.y);
+        ctx.lineTo(m.x, m.y);
+        ctx.stroke();
       }
-
-      requestAnimationFrame(animate);
     }
+  }
 
-    animate();
+  requestAnimationFrame(animate);
+}
+animate();
 
-    /* ===== NAVIGATION ===== */
-    function goJoin() {
-      location.href = "join.html";
-    }
+/* ===== NAV ===== */
+function goJoin() {
+  location.href = "join.html";
+}
 
-    function goDiscord() {
-      window.open("https://discord.gg/7RfR34ascE", "_blank");
-    }
+function goDiscord() {
+  window.open("https://discord.gg/7RfR34ascE", "_blank");
+}
 
-    function goInstagram() {
-      window.open(
-        "https://www.instagram.com/ehs_cybersecurity_club?igsh=amd6Nnk5MndjOWpk",
-        "_blank"
-      );
-    }
-  </script>
+function goInstagram() {
+  window.open(
+    "https://www.instagram.com/ehs_cybersecurity_club?igsh=amd6Nnk5MndjOWpk",
+    "_blank"
+  );
+}
+</script>
 
 </body>
 </html>
