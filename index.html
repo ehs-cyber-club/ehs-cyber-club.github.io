@@ -36,62 +36,82 @@
       padding: 20px;
     }
 
-    /* ===== TITLE (RED + STRONG BLUE SWEEP) ===== */
+    /* ================================
+       TITLE: PURE RED + PURE BLUE SWEEP
+       ================================ */
     .shimmer-title {
-      font-size: clamp(3rem, 6vw, 4.8rem);
+      font-size: clamp(3rem, 6vw, 5rem);
       font-weight: 900;
       letter-spacing: 2px;
 
-      /* Bright red base + huge blue scan stripe */
-      background: linear-gradient(
-        120deg,
-        #ff0000 0%,
-        #ff0000 25%,
+      /* BASE TEXT COLOR */
+      color: #ff0000;
 
-        #00ccff 42%,
-        #00ccff 50%,
-        #00ccff 58%,
+      /* The sweep is a MASK layer, not mixed */
+      position: relative;
 
-        #ff0000 75%,
-        #ff0000 100%
+      text-shadow:
+        0 0 20px rgba(255, 0, 0, 1),
+        0 0 55px rgba(255, 0, 0, 0.85),
+        0 0 110px rgba(255, 0, 0, 0.65);
+    }
+
+    /* BLUE SWEEP OVERLAY */
+    .shimmer-title::after {
+      content: "Welcome, Cyber Raptors";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      color: #00ccff;
+
+      /* PURE BLUE STRIPE ONLY */
+      clip-path: polygon(
+        -30% 0%,
+        -10% 0%,
+        0% 100%,
+        -20% 100%
       );
 
-      background-size: 320% 100%;
-      background-position: 0% 50%;
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      /* Holy red core + massive neon blue glow */
       text-shadow:
-        0 0 18px rgba(255, 0, 0, 1),
-        0 0 45px rgba(255, 0, 0, 0.85),
-        0 0 85px rgba(255, 0, 0, 0.65),
+        0 0 25px rgba(0, 220, 255, 1),
+        0 0 65px rgba(0, 220, 255, 0.95),
+        0 0 140px rgba(0, 220, 255, 0.85);
 
-        0 0 25px rgba(0, 204, 255, 1),
-        0 0 65px rgba(0, 204, 255, 0.95),
-        0 0 140px rgba(0, 204, 255, 0.8);
-
-      animation: glowSweep 3.5s linear infinite;
+      animation: sweep 3.5s linear infinite;
     }
 
-    @keyframes glowSweep {
+    /* Moves the stripe smoothly */
+    @keyframes sweep {
       0% {
-        background-position: 0% 50%;
+        clip-path: polygon(
+          -30% 0%,
+          -10% 0%,
+          0% 100%,
+          -20% 100%
+        );
       }
+
       100% {
-        background-position: 100% 50%;
+        clip-path: polygon(
+          110% 0%,
+          130% 0%,
+          120% 100%,
+          100% 100%
+        );
       }
     }
 
-    /* ===== CLUB LINE ===== */
+    /* CLUB LINE */
     .club-line {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: #3aa7ff;
       text-shadow: 0 0 18px rgba(58, 167, 255, 0.9);
     }
 
-    /* ===== MAIN TEXT ===== */
+    /* MAIN TEXT */
     p {
       max-width: 650px;
       font-size: 1.1rem;
@@ -99,7 +119,7 @@
       line-height: 1.6;
     }
 
-    /* ===== BUTTONS ===== */
+    /* BUTTONS */
     .buttons {
       display: flex;
       gap: 18px;
@@ -117,7 +137,8 @@
       cursor: pointer;
       border-radius: 10px;
       transition: 0.2s;
-      box-shadow: 0 0 18px rgba(255, 0, 0, 0.45);
+
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.55);
 
       display: flex;
       align-items: center;
@@ -127,7 +148,7 @@
     button:hover {
       background: #ff3b3b;
       color: black;
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.95);
+      box-shadow: 0 0 55px rgba(255, 0, 0, 1);
       transform: translateY(-2px);
     }
 
@@ -137,7 +158,7 @@
       filter: invert(1);
     }
 
-    /* ===== FOOTER ===== */
+    /* FOOTER */
     footer {
       position: fixed;
       bottom: 12px;
@@ -232,7 +253,7 @@ function animate() {
       const d = Math.hypot(n.x - m.x, n.y - m.y);
 
       if (d < MAX_DIST) {
-        ctx.strokeStyle = `rgba(255,0,0,${1 - d / MAX_DIST})`;
+        ctx.strokeStyle = `rgba(0,200,255,${1 - d / MAX_DIST})`;
         ctx.beginPath();
         ctx.moveTo(n.x, n.y);
         ctx.lineTo(m.x, m.y);
