@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Join · Cyber Raptors</title>
+  <title>Apply · Cyber Raptors</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -10,13 +10,13 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: system-ui, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
     }
 
     body {
       background: black;
-      color: #ff3b3b;
-      overflow: hidden;
+      color: white;
+      overflow-x: hidden;
     }
 
     canvas {
@@ -25,91 +25,116 @@
       z-index: -1;
     }
 
-    .card {
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .form-box {
       width: 100%;
-      max-width: 540px;
-      margin: auto;
-      margin-top: 8vh;
-      background: rgba(15, 0, 0, 0.92);
-      border: 2px solid #ff3b3b;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.55);
-      text-align: center;
+      max-width: 520px;
+      padding: 35px;
+      border-radius: 18px;
+
+      background: rgba(0, 0, 0, 0.72);
+      border: 2px solid rgba(0, 200, 255, 0.6);
+
+      box-shadow:
+        0 0 25px rgba(0, 200, 255, 0.4),
+        0 0 55px rgba(255, 0, 0, 0.35);
+
+      backdrop-filter: blur(10px);
     }
 
     h1 {
+      text-align: center;
       font-size: 2.4rem;
-      margin-bottom: 14px;
-      text-shadow: 0 0 18px red;
+      font-weight: 900;
+      color: #ff2b2b;
+
+      text-shadow:
+        0 0 10px rgba(0, 220, 255, 0.8),
+        0 0 25px rgba(0, 220, 255, 0.5),
+        0 0 35px rgba(255, 0, 0, 0.8);
     }
 
     p {
-      color: #d0d8ff;
+      text-align: center;
+      margin-top: 10px;
       margin-bottom: 25px;
-      font-size: 1.05rem;
-      line-height: 1.4;
+      color: #b8dfff;
+      font-size: 1rem;
     }
 
     label {
       display: block;
-      text-align: left;
-      margin-top: 14px;
-      font-size: 0.95rem;
-      color: #ffb3b3;
+      margin-top: 18px;
+      font-weight: 600;
+      color: #00ccff;
     }
 
-    input, textarea, select {
+    input, select, textarea {
       width: 100%;
       margin-top: 6px;
-      padding: 11px;
-      border-radius: 9px;
-      border: 1px solid #ff3b3b;
-      background: black;
+      padding: 12px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.65);
       color: white;
+      font-size: 1rem;
       outline: none;
-      font-size: 0.95rem;
+
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.25);
+      transition: 0.2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #00ccff;
+      box-shadow: 0 0 18px rgba(0, 220, 255, 0.7);
     }
 
     textarea {
-      resize: vertical;
-      min-height: 90px;
+      resize: none;
+      height: 90px;
     }
 
     button {
       width: 100%;
-      margin-top: 22px;
+      margin-top: 28px;
       padding: 14px;
+      border-radius: 12px;
+      border: none;
       font-size: 1.05rem;
-      border-radius: 10px;
-      border: 2px solid #ff3b3b;
-      background: transparent;
-      color: #ff3b3b;
+      font-weight: 700;
       cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 0 22px rgba(255,0,0,0.45);
+
+      background: linear-gradient(90deg, #ff2b2b, #00ccff);
+      color: black;
+
+      box-shadow:
+        0 0 20px rgba(0, 220, 255, 0.6),
+        0 0 35px rgba(255, 0, 0, 0.5);
+
+      transition: 0.25s;
     }
 
     button:hover {
-      background: #ff3b3b;
-      color: black;
-      box-shadow: 0 0 40px rgba(255,0,0,0.9);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 35px rgba(0, 220, 255, 0.9),
+        0 0 55px rgba(255, 0, 0, 0.7);
     }
 
-    .back {
+    .status {
+      text-align: center;
       margin-top: 18px;
-      display: inline-block;
-      color: #3aa7ff;
-      cursor: pointer;
-      text-decoration: underline;
-      font-size: 0.95rem;
-    }
-
-    #msg {
-      margin-top: 16px;
-      font-size: 0.95rem;
-      color: #3aa7ff;
-      min-height: 22px;
+      font-weight: bold;
+      color: #00ffcc;
     }
   </style>
 </head>
@@ -118,111 +143,106 @@
 
 <canvas id="bg"></canvas>
 
-<div class="card">
-  <h1>Join Cyber Raptors</h1>
+<div class="wrapper">
+  <div class="form-box">
+    <h1>Apply to Join</h1>
+    <p>Cyber Raptors Application Form</p>
 
-  <p>
-    Apply to Eagle Crest High School’s Cybersecurity Club.<br>
-    No experience required. All grades welcome.
-  </p>
+    <form id="applyForm">
 
-  <form id="form">
+      <label>Full Name</label>
+      <input id="full_name" required />
 
-    <label>Full Name *</label>
-    <input type="text" id="name" required>
+      <label>Grade</label>
+      <select id="grade" required>
+        <option value="">Select</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
 
-    <label>Grade *</label>
-    <select id="grade" required>
-      <option value="">Select</option>
-      <option>9</option>
-      <option>10</option>
-      <option>11</option>
-      <option>12</option>
-    </select>
+      <label>Email</label>
+      <input id="email" type="email" required />
 
-    <label>School Email *</label>
-    <input type="email" id="email" required>
+      <label>Cybersecurity Experience</label>
+      <textarea id="experience"></textarea>
 
-    <label>Why do you want to join?</label>
-    <textarea id="experience" placeholder="Optional"></textarea>
+      <label>Would you like to help manage club activities?</label>
+      <select id="help_manage">
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="prefer_not">Prefer not to answer</option>
+      </select>
 
-    <button type="submit">Submit Application</button>
-  </form>
+      <label>Best Meeting Day Fit</label>
+      <select id="meeting_day">
+        <option value="">Select</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+      </select>
 
-  <div id="msg"></div>
+      <label>Why do you want to join?</label>
+      <textarea id="why_join"></textarea>
 
-  <div class="back" onclick="goBack()">← Back to Home</div>
+      <button type="submit">Submit Application</button>
+
+      <div class="status" id="status"></div>
+    </form>
+  </div>
 </div>
 
-
-<!-- ✅ Supabase Library -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-/* ============================================
-   BACK BUTTON
-============================================ */
-function goBack() {
-  location.href = "index.html";
-}
+/* ===== SUPABASE CONFIG ===== */
+const SUPABASE_URL = "https://xgvqmtumbtfvfuxodbhz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_dcTG9rcxslX9Nw9-IwcbcQ_ChDcIgwP";
 
-
-/* ============================================
-   SUPABASE CONFIG (REPLACE WITH REAL VALUES)
-============================================ */
-
-const SUPABASE_URL =
-  "https://xgvqmtumbtfvfuxodbhz.supabase.co";
-
-const SUPABASE_ANON_KEY =
-  "sb_publishable_dcTG9rcxslX9Nw9-IwcbcQ_ChDcIgwP";
-
-const db = supabase.createClient(
+const supabase = window.supabase.createClient(
   SUPABASE_URL,
-  SUPABASE_ANON_KEY
+  SUPABASE_KEY
 );
 
+/* ===== FORM SUBMIT ===== */
+const form = document.getElementById("applyForm");
+const statusText = document.getElementById("status");
 
-/* ============================================
-   FORM SUBMIT → TABLE: applications1
-============================================ */
-
-document.getElementById("form").addEventListener("submit", async function(e) {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  statusText.textContent = "Submitting...";
 
-  const msg = document.getElementById("msg");
+  const data = {
+    full_name: document.getElementById("full_name").value,
+    grade: document.getElementById("grade").value,
+    email: document.getElementById("email").value,
+    experience: document.getElementById("experience").value,
+    help_manage: document.getElementById("help_manage").value,
+    meeting_day: document.getElementById("meeting_day").value,
+    why_join: document.getElementById("why_join").value
+  };
 
-  const name = document.getElementById("name").value.trim();
-  const grade = document.getElementById("grade").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const experience = document.getElementById("experience").value.trim();
-
-  msg.textContent = "Submitting...";
-
-  const { error } = await db
+  const { error } = await supabase
     .from("applications1")
-    .insert([
-      {
-        name: name,
-        grade: grade,
-        email: email,
-        experience: experience
-      }
-    ]);
+    .insert([data]);
 
   if (error) {
-    msg.textContent = "Error: " + error.message;
+    statusText.style.color = "red";
+    statusText.textContent = "Error: " + error.message;
   } else {
-    msg.textContent = "Application submitted successfully!";
-    this.reset();
+    statusText.style.color = "#00ffcc";
+    statusText.textContent = "Application submitted successfully!";
+    form.reset();
   }
 });
+</script>
 
-
-/* ============================================
-   NEURAL BACKGROUND ANIMATION
-============================================ */
-
+<script>
+/* ===== Neural Network Background ===== */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
@@ -234,15 +254,15 @@ addEventListener("resize", resize);
 resize();
 
 const nodes = [];
-const NODE_COUNT = 110;
-const MAX_DIST = 150;
+const NODE_COUNT = 120;
+const MAX_DIST = 160;
 
 for (let i = 0; i < NODE_COUNT; i++) {
   nodes.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.45,
-    vy: (Math.random() - 0.5) * 0.45
+    vx: (Math.random() - 0.5) * 0.5,
+    vy: (Math.random() - 0.5) * 0.5
   });
 }
 
@@ -257,19 +277,19 @@ function animate() {
     if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
     if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-    /* Red Nodes */
-    ctx.fillStyle = "#ff3b3b";
+    /* red nodes */
+    ctx.fillStyle = "#ff2b2b";
     ctx.beginPath();
     ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
     ctx.fill();
 
-    /* Blue Connections */
+    /* blue connections */
     for (let j = i + 1; j < nodes.length; j++) {
       const m = nodes[j];
       const d = Math.hypot(n.x - m.x, n.y - m.y);
 
       if (d < MAX_DIST) {
-        ctx.strokeStyle = `rgba(58,167,255,${1 - d / MAX_DIST})`;
+        ctx.strokeStyle = `rgba(0,200,255,${1 - d / MAX_DIST})`;
         ctx.beginPath();
         ctx.moveTo(n.x, n.y);
         ctx.lineTo(m.x, m.y);
@@ -280,7 +300,6 @@ function animate() {
 
   requestAnimationFrame(animate);
 }
-
 animate();
 </script>
 
