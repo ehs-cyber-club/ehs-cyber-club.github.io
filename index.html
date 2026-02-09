@@ -36,9 +36,7 @@
       padding: 20px;
     }
 
-    /* ================================
-       TITLE: TWO INDEPENDENT GLOWS
-       ================================ */
+  
     .title-wrap {
       display: flex;
       flex-direction: column;
@@ -104,14 +102,14 @@
       }
     }
 
-    /* CLUB LINE */
+    
     .club-line {
       font-size: 1.3rem;
       color: #3aa7ff;
       text-shadow: 0 0 18px rgba(58, 167, 255, 0.9);
     }
 
-    /* MAIN TEXT */
+    
     p {
       max-width: 650px;
       font-size: 1.1rem;
@@ -119,7 +117,7 @@
       line-height: 1.6;
     }
 
-    /* BUTTONS */
+    
     .buttons {
       display: flex;
       gap: 18px;
@@ -158,7 +156,7 @@
       filter: invert(1);
     }
 
-    /* FOOTER */
+    
     footer {
       position: fixed;
       bottom: 12px;
@@ -252,7 +250,7 @@ function animate() {
     if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
     if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-    /* POINTS = BLUE */
+  
     ctx.fillStyle = "#00ccff";
     ctx.beginPath();
     ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
@@ -279,7 +277,7 @@ function animate() {
 }
 animate();
 
-/* ===== NAVIGATION ===== */
+
 function goJoin() {
   location.href = "join.html";
 }
