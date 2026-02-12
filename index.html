@@ -56,7 +56,6 @@
         0 0 110px rgba(255, 0, 0, 0.65);
     }
 
-    /* BLUE SWEEP OVERLAY */
     .shimmer::after {
       content: attr(data-text);
       position: absolute;
@@ -174,7 +173,6 @@
 
 <div class="center">
 
-  <!-- TWO SEPARATE GLOWS -->
   <div class="title-wrap">
     <div class="shimmer" data-text="Welcome">
       Welcome
@@ -215,7 +213,6 @@
 </footer>
 
 <script>
-/* ===== Background Network Animation ===== */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
@@ -227,8 +224,8 @@ addEventListener("resize", resize);
 resize();
 
 const nodes = [];
-const NODE_COUNT = 120;
-const MAX_DIST = 150;
+const NODE_COUNT = 160;
+const MAX_DIST = 220;
 
 for (let i = 0; i < NODE_COUNT; i++) {
   nodes.push({
@@ -261,8 +258,6 @@ function animate() {
       const d = Math.hypot(n.x - m.x, n.y - m.y);
 
       if (d < MAX_DIST) {
-
-        /* LINES = RED */
         ctx.strokeStyle = `rgba(255,0,0,${1 - d / MAX_DIST})`;
 
         ctx.beginPath();
