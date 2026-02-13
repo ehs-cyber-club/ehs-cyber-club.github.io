@@ -1,292 +1,250 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Cyber Raptors · EHS Cybersecurity Club</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Cyber Raptors · EHS Cybersecurity Club</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-    }
+<style>
 
-    body {
-      background: black;
-      overflow: hidden;
-      color: white;
-    }
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif;}
 
-    canvas {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-    }
+body{
+  background:black;
+  color:white;
+  overflow:hidden;
+  padding-top:70px;
+}
 
-    .center {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      gap: 22px;
-      padding: 20px;
-    }
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:64px;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,0,0,.4);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+  z-index:50;
+}
 
-  
-    .title-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+.nav-title{
+  font-weight:900;
+  color:#ff3b3b;
+  text-shadow:0 0 12px red;
+}
 
-    .shimmer {
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #ff0000;
-      position: relative;
+.nav-links a{
+  margin-left:28px;
+  text-decoration:none;
+  color:#cfe6ff;
+  font-weight:600;
+  transition:.2s;
+}
 
-      text-shadow:
-        0 0 20px rgba(255, 0, 0, 1),
-        0 0 55px rgba(255, 0, 0, 0.85),
-        0 0 110px rgba(255, 0, 0, 0.65);
-    }
+.nav-links a:hover{
+  color:#ff3b3b;
+  text-shadow:0 0 12px red;
+}
 
-    .shimmer::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
+/* FLOATING LOGO BADGE */
+.logo-badge{
+  position:fixed;
+  left:40px;
+  bottom:40px;
+  width:140px;
+  border-radius:50%;
+  filter:drop-shadow(0 0 20px #00bfff) drop-shadow(0 0 60px #00bfff);
+  animation:logoFloat 5s ease-in-out infinite;
+  z-index:5;
+}
 
-      color: #00ccff;
+@keyframes logoFloat{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-12px);}
+  100%{transform:translateY(0px);}
+}
 
-      clip-path: polygon(
-        -30% 0%,
-        -10% 0%,
-        0% 100%,
-        -20% 100%
-      );
+/* RED STAR */
+.star{
+  position:fixed;
+  top:20%;
+  right:14%;
+  width:20px;
+  height:20px;
+  background:red;
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  box-shadow:0 0 12px red,0 0 30px red,0 0 70px red;
+  animation:starPulse 2s infinite ease-in-out;
+}
 
-      text-shadow:
-        0 0 25px rgba(0, 220, 255, 1),
-        0 0 65px rgba(0, 220, 255, 0.95),
-        0 0 140px rgba(0, 220, 255, 0.85);
+@keyframes starPulse{
+  0%{transform:scale(.8);opacity:.6;}
+  50%{transform:scale(1.5);opacity:1;}
+  100%{transform:scale(.8);opacity:.6;}
+}
 
-      animation: sweep 3.5s linear infinite;
-    }
+/* CANVAS BACKGROUND */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
 
-    @keyframes sweep {
-      0% {
-        clip-path: polygon(
-          -30% 0%,
-          -10% 0%,
-          0% 100%,
-          -20% 100%
-        );
-      }
+.center{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:22px;
+  padding:20px;
+}
 
-      100% {
-        clip-path: polygon(
-          110% 0%,
-          130% 0%,
-          120% 100%,
-          100% 100%
-        );
-      }
-    }
+.title{
+  font-size:clamp(3rem,6vw,5rem);
+  font-weight:900;
+  color:#ff0000;
+  text-shadow:0 0 20px red,0 0 60px red;
+}
 
-    
-    .club-line {
-      font-size: 1.3rem;
-      color: #3aa7ff;
-      text-shadow: 0 0 18px rgba(58, 167, 255, 0.9);
-    }
+.club-line{
+  font-size:1.3rem;
+  color:#3aa7ff;
+  text-shadow:0 0 15px #3aa7ff;
+}
 
-    
-    p {
-      max-width: 650px;
-      font-size: 1.1rem;
-      color: #d0d8ff;
-      line-height: 1.6;
-    }
+p{
+  max-width:650px;
+  font-size:1.1rem;
+  color:#d0d8ff;
+  line-height:1.6;
+}
 
-    
-    .buttons {
-      display: flex;
-      gap: 18px;
-      margin-top: 25px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+.buttons{
+  display:flex;
+  gap:18px;
+  margin-top:25px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 
-    button {
-      background: transparent;
-      border: 2px solid #ff3b3b;
-      color: #ff3b3b;
-      padding: 14px 30px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: 0.2s;
+button{
+  background:transparent;
+  border:2px solid #ff3b3b;
+  color:#ff3b3b;
+  padding:14px 30px;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow:0 0 20px rgba(255,0,0,.6);
+  transition:.2s;
+}
 
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.55);
+button:hover{
+  background:#ff3b3b;
+  color:black;
+  box-shadow:0 0 55px red;
+  transform:translateY(-2px);
+}
 
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+footer{
+  position:fixed;
+  bottom:12px;
+  width:100%;
+  text-align:center;
+  font-size:.85rem;
+  color:#6a7cff;
+}
 
-    button:hover {
-      background: #ff3b3b;
-      color: black;
-      box-shadow: 0 0 55px rgba(255, 0, 0, 1);
-      transform: translateY(-2px);
-    }
+</style>
 
-    .social img {
-      width: 18px;
-      height: 18px;
-      filter: invert(1);
-    }
-
-    
-    footer {
-      position: fixed;
-      bottom: 12px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #6a7cff;
-    }
-  </style>
 </head>
 
 <body>
 
+<nav class="navbar">
+  <div class="nav-title">Cyber Raptors</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="join.html">Apply</a>
+  </div>
+</nav>
+
+<img src="logo.png" class="logo-badge">
+<div class="star"></div>
+
 <canvas id="bg"></canvas>
 
 <div class="center">
-
-  <div class="title-wrap">
-    <div class="shimmer" data-text="Welcome">
-      Welcome
-    </div>
-
-    <div class="shimmer" data-text="Cyber Raptors">
-      Cyber Raptors
-    </div>
-  </div>
+  <div class="title">Cyber Raptors</div>
 
   <div class="club-line">
     Eaglecrest High School Cybersecurity Club
   </div>
 
   <p>
-    Helping kids understand how digital systems work and how to protect them.
-    Open to all grades. No experience required.
+    Helping students understand computers, networks, and artificial intelligence 
+    and how to protect digital systems safely and responsibly.
   </p>
 
   <div class="buttons">
-    <button onclick="goJoin()">Apply to Join</button>
-
-    <button class="social" onclick="goDiscord()">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg">
-      Discord
-    </button>
-
-    <button class="social" onclick="goInstagram()">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg">
-      Instagram
-    </button>
+    <button onclick="location.href='join.html'">Apply to Join</button>
   </div>
-
 </div>
 
 <footer>
-  Made For Students By a Student
+Made For Students By Students.
 </footer>
 
 <script>
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
 
-function resize() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-}
-addEventListener("resize", resize);
-resize();
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+addEventListener("resize",resize);resize();
 
-const nodes = [];
-const NODE_COUNT = 160;
-const MAX_DIST = 220;
-
-for (let i = 0; i < NODE_COUNT; i++) {
-  nodes.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4
-  });
+const nodes=[];
+for(let i=0;i<140;i++){
+nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});
 }
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  for (let i = 0; i < nodes.length; i++) {
-    const n = nodes[i];
-    n.x += n.vx;
-    n.y += n.vy;
+for(let i=0;i<nodes.length;i++){
+let n=nodes[i];
+n.x+=n.vx;n.y+=n.vy;
+if(n.x<0||n.x>canvas.width)n.vx*=-1;
+if(n.y<0||n.y>canvas.height)n.vy*=-1;
 
-    if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
-    if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+ctx.fillStyle="#00ccff";
+ctx.beginPath();
+ctx.arc(n.x,n.y,2,0,Math.PI*2);
+ctx.fill();
 
-  
-    ctx.fillStyle = "#00ccff";
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
-    ctx.fill();
-
-    for (let j = i + 1; j < nodes.length; j++) {
-      const m = nodes[j];
-      const d = Math.hypot(n.x - m.x, n.y - m.y);
-
-      if (d < MAX_DIST) {
-        ctx.strokeStyle = `rgba(255,0,0,${1 - d / MAX_DIST})`;
-
-        ctx.beginPath();
-        ctx.moveTo(n.x, n.y);
-        ctx.lineTo(m.x, m.y);
-        ctx.stroke();
-      }
-    }
-  }
-
-  requestAnimationFrame(animate);
+for(let j=i+1;j<nodes.length;j++){
+let m=nodes[j];
+let d=Math.hypot(n.x-m.x,n.y-m.y);
+if(d<200){
+ctx.strokeStyle=`rgba(255,0,0,${1-d/200})`;
+ctx.beginPath();
+ctx.moveTo(n.x,n.y);
+ctx.lineTo(m.x,m.y);
+ctx.stroke();
+}
+}
+}
+requestAnimationFrame(animate);
 }
 animate();
-
-
-function goJoin() {
-  location.href = "join.html";
-}
-
-function goDiscord() {
-  window.open("https://discord.gg/7RfR34ascE", "_blank");
-}
-
-function goInstagram() {
-  window.open(
-    "https://www.instagram.com/ehs_cybersecurity_club?igsh=amd6Nnk5MndjOWpk",
-    "_blank"
-  );
-}
 </script>
 
 </body>
