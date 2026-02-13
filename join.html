@@ -1,37 +1,41 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<title>Apply · Cyber Raptors</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<title>Apply Cyber Raptors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif;}
-body{background:black;color:white;overflow-x:hidden;}
-canvas{position:fixed;inset:0;z-index:-2}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
 
-.wrapper{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:60px 20px;}
+body{background:black;color:white;overflow-x:hidden}
+
+canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+.wrapper{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:60px 20px
+}
 
 .form-box{
 width:100%;
 max-width:560px;
-padding:42px;
+padding:40px;
 border-radius:22px;
 background:rgba(0,0,0,.82);
 border:2px solid rgba(0,120,180,.25);
 box-shadow:0 0 30px red,0 0 85px rgba(255,0,0,.45);
-backdrop-filter:blur(14px);
-position:relative;
-z-index:2;
-animation:fadeIn .8s ease;
+backdrop-filter:blur(14px)
 }
-@keyframes fadeIn{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
 
-h1{text-align:center;font-size:2.7rem;font-weight:900;color:#ff0000;text-shadow:0 0 15px red,0 0 45px red,0 0 90px red;}
-p{text-align:center;margin-top:12px;margin-bottom:32px;color:#b8dfff;}
+h1{text-align:center;font-size:2.5rem;color:#ff0000;text-shadow:0 0 15px red,0 0 45px red,0 0 90px red}
 
-label{display:block;margin-top:18px;font-weight:750;color:#ff4444;}
+p{text-align:center;margin:12px 0 30px;color:#b8dfff}
+
+label{display:block;margin-top:18px;font-weight:700;color:#ff4444}
 
 input,select,textarea{
 width:100%;
@@ -42,90 +46,86 @@ border:2px solid rgba(255,0,0,.55);
 background:rgba(0,0,0,.7);
 color:white;
 outline:none;
-box-shadow:0 0 10px rgba(255,0,0,.25);
+box-shadow:0 0 10px rgba(255,0,0,.25)
 }
-input:focus,textarea:focus,select:focus{border-color:#ff0000;box-shadow:0 0 20px red;}
 
-textarea{resize:none;height:95px;}
+input:focus,textarea:focus,select:focus{
+border-color:#ff0000;
+box-shadow:0 0 20px red
+}
+
+textarea{resize:none;height:95px}
 
 button{
 width:100%;
-margin-top:34px;
+margin-top:30px;
 padding:16px;
 border-radius:14px;
 border:none;
-font-size:1.15rem;
+font-size:1.1rem;
 font-weight:900;
 cursor:pointer;
-position:relative;
-overflow:hidden;
 background:linear-gradient(90deg,#ff0000,#140000,#ff0000);
 color:white;
-box-shadow:0 0 30px red,0 0 70px rgba(255,0,0,.55);
-transition:.25s;
+box-shadow:0 0 30px red,0 0 70px rgba(255,0,0,.55)
 }
-button::before{
-content:"";
-position:absolute;
-top:0;left:-120%;
-width:60%;height:100%;
-background:rgba(255,255,255,.25);
-transform:skewX(-25deg);
-animation:buttonSweep 2.8s infinite;
-}
-@keyframes buttonSweep{0%{left:-120%}50%{left:120%}100%{left:120%}}
 
-.status{text-align:center;margin-top:20px;font-weight:900;color:#ff0000;}
-
+.status{text-align:center;margin-top:20px;font-weight:900;color:#ff0000}
 </style>
-
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+<canvas id="bg" data-mode="apply"></canvas>
 
 <div class="wrapper">
 <div class="form-box">
 
 <h1>Apply to Join</h1>
-<p>Cyber Raptors Application Form</p>
+<p>Cyber Raptors Application</p>
 
 <form id="applyForm">
 
-<label>Full Name *</label> <input id="full_name" required/>
+<label>Full Name</label>
+<input id="full_name" required>
 
-<label>Grade *</label> <select id="grade" required>
-
+<label>Grade</label>
+<select id="grade" required>
 <option value="">Select</option>
-<option>9</option><option>10</option><option>11</option><option>12</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
 </select>
 
-<label>Email *</label> <input id="email" type="email" required/>
+<label>Email</label>
+<input id="email" type="email" required>
 
-<label>Cybersecurity Experience</label>
-
+<label>Experience</label>
 <textarea id="experience"></textarea>
 
-<label>Would you like to help manage club activities?</label> <select id="help_manage">
-
+<label>Help manage club</label>
+<select id="help_manage">
 <option value="">Select</option>
 <option value="yes">Yes</option>
 <option value="no">No</option>
 <option value="prefer_not">Prefer not to answer</option>
 </select>
 
-<label>Best Meeting Day Fit</label> <select id="meeting_day">
-
+<label>Best meeting day</label>
+<select id="meeting_day">
 <option value="">Select</option>
-<option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option>
+<option>Monday</option>
+<option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thursday</option>
+<option>Friday</option>
 </select>
 
-<label>Why do you want to join?</label>
-
+<label>Why do you want to join</label>
 <textarea id="why_join"></textarea>
 
-<button id="submitBtn" type="submit">Submit Application</button>
+<button type="submit" id="submitBtn">Submit Application</button>
 
 <div class="status" id="status"></div>
 
@@ -136,18 +136,17 @@ animation:buttonSweep 2.8s infinite;
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL="https://xgvqmtumbtfvfuxodbhz.supabase.co";
-const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhndnFtdHVtYnRmdmZ1eG9kYmh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1NTMxNTgsImV4cCI6MjA4NTEyOTE1OH0.qxiyoFRVmtD-P4T92u0hvaIR-tqhOj6PmsUzhOAcPuE";
+const SUPABASE_URL="PASTE_URL";
+const SUPABASE_KEY="PASTE_KEY";
 
-const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
 const form=document.getElementById("applyForm");
-const statusText=document.getElementById("status");
-const submitBtn=document.getElementById("submitBtn");
+const status=document.getElementById("status");
 
 form.addEventListener("submit",async(e)=>{
 e.preventDefault();
-statusText.textContent="Please Wait";
-submitBtn.disabled=true;
+status.textContent="Submitting...";
 
 const data={
 full_name:document.getElementById("full_name").value.trim(),
@@ -159,28 +158,29 @@ meeting_day:document.getElementById("meeting_day").value,
 why_join:document.getElementById("why_join").value.trim()
 };
 
-const{error}=await supabaseClient.from("applications1").insert([data]);
+const {error}=await supabase.from("applications1").insert([data]);
 
-if(error){statusText.textContent="Error: "+error.message;}
-else{statusText.textContent="Application submitted successfully";form.reset();}
-
-submitBtn.disabled=false;
+if(error){
+status.textContent="Error: "+error.message;
+}else{
+status.textContent="Application submitted successfully";
+form.reset();
+}
 });
 
-/* BLUE CONNECTIONS + RED NODES */
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
-function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
-addEventListener("resize",resize);resize();
+
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener("resize",resize);
+resize();
 
 const nodes=[];
-const MAX_DIST=170;
-
 for(let i=0;i<120;i++){
-nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.55,vy:(Math.random()-.5)*.55});
+nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5});
 }
 
-function animate(){
+function draw(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 for(let i=0;i<nodes.length;i++){
 const n=nodes[i];
@@ -189,4 +189,26 @@ if(n.x<0||n.x>canvas.width)n.vx*=-1;
 if(n.y<0||n.y>canvas.height)n.vy*=-1;
 
 ctx.fillStyle="#ff0000";
-ctx.beginPath();ct
+ctx.beginPath();
+ctx.arc(n.x,n.y,2,0,Math.PI*2);
+ctx.fill();
+
+for(let j=i+1;j<nodes.length;j++){
+const m=nodes[j];
+const d=Math.hypot(n.x-m.x,n.y-m.y);
+if(d<170){
+ctx.strokeStyle="rgba(0,120,180,"+(1-d/170)+")";
+ctx.beginPath();
+ctx.moveTo(n.x,n.y);
+ctx.lineTo(m.x,m.y);
+ctx.stroke();
+}
+}
+}
+requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>

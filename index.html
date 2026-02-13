@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<title>Cyber Raptors · EHS Cybersecurity Club</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<title>Cyber Raptors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif;}
-body{background:black;color:white;overflow-x:hidden;}
-canvas{position:fixed;inset:0;z-index:-1}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
 
-/* ---------- NAV ---------- */
+body{background:black;color:white;overflow-x:hidden}
+
+canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
 .nav{
 position:fixed;
 top:0;
@@ -19,24 +19,24 @@ width:100%;
 display:flex;
 justify-content:center;
 gap:40px;
-padding:14px;
+padding:16px;
 background:rgba(0,0,0,.55);
 backdrop-filter:blur(8px);
-z-index:5;
+z-index:5
 }
+
 .nav a{
 color:#9fdcff;
 text-decoration:none;
 font-weight:700;
-letter-spacing:.5px;
-transition:.25s;
-}
-.nav a:hover{
-color:#ff3b3b;
-text-shadow:0 0 12px red;
+transition:.25s
 }
 
-/* ---------- HERO ---------- */
+.nav a:hover{
+color:#ff3b3b;
+text-shadow:0 0 12px red
+}
+
 .center{
 min-height:100vh;
 display:flex;
@@ -44,8 +44,8 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-gap:20px;
-padding-top:70px;
+gap:18px;
+padding-top:80px
 }
 
 .shimmer{
@@ -54,44 +54,42 @@ font-weight:900;
 letter-spacing:2px;
 color:#ff0000;
 position:relative;
-text-shadow:0 0 20px red,0 0 60px red,0 0 120px red;
+text-shadow:0 0 20px red,0 0 60px red,0 0 120px red
 }
+
 .shimmer::after{
 content:attr(data-text);
 position:absolute;
-left:0;top:0;
-width:100%;height:100%;
+left:0;
+top:0;
+width:100%;
+height:100%;
 color:#00ccff;
 clip-path:polygon(-30% 0%,-10% 0%,0% 100%,-20% 100%);
 text-shadow:0 0 25px #00ccff,0 0 80px #00ccff;
-animation:sweep 3.5s linear infinite;
+animation:sweep 3.5s linear infinite
 }
+
 @keyframes sweep{
-0%{clip-path:polygon(-30% 0%,-10% 0%,0% 100%,-20% 100%);}
-100%{clip-path:polygon(110% 0%,130% 0%,120% 100%,100% 100%);}
+0%{clip-path:polygon(-30% 0%,-10% 0%,0% 100%,-20% 100%)}
+100%{clip-path:polygon(110% 0%,130% 0%,120% 100%,100% 100%)}
 }
 
-/* stars */
-.stars{
-display:flex;
-gap:18px;
-margin-bottom:-8px;
-}
-.star{
-width:18px;height:18px;
-background:red;
-clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-animation:starGlow 2s ease-in-out infinite alternate;
-box-shadow:0 0 15px red,0 0 35px red;
-}
-@keyframes starGlow{
-from{transform:translateY(0)}
-to{transform:translateY(-6px)}
+.club{
+color:#3aa7ff;
+text-shadow:0 0 18px #3aa7ff;
+font-size:1.25rem
 }
 
-.club-line{color:#3aa7ff;text-shadow:0 0 18px #3aa7ff;font-size:1.2rem;}
+.desc{
+max-width:650px;
+color:#d0d8ff;
+line-height:1.6;
+font-size:1.1rem
+}
 
-.buttons{display:flex;gap:18px;margin-top:25px;flex-wrap:wrap;justify-content:center;}
+.buttons{display:flex;gap:18px;margin-top:25px;flex-wrap:wrap;justify-content:center}
+
 button{
 background:transparent;
 border:2px solid #ff3b3b;
@@ -100,29 +98,14 @@ padding:14px 30px;
 border-radius:10px;
 cursor:pointer;
 transition:.2s;
-box-shadow:0 0 20px rgba(255,0,0,.55);
+box-shadow:0 0 20px rgba(255,0,0,.55)
 }
-button:hover{background:#ff3b3b;color:black;box-shadow:0 0 60px red;transform:translateY(-2px);}
 
-.social img{width:18px;height:18px;filter:invert(1);}
-
-/* ---------- ABOUT ---------- */
-#about{
-padding:120px 20px;
-max-width:850px;
-margin:auto;
-text-align:center;
-}
-#about h2{
-font-size:2.2rem;
-color:#ff3b3b;
-margin-bottom:18px;
-text-shadow:0 0 20px red;
-}
-#about p{
-color:#d0d8ff;
-line-height:1.7;
-margin-bottom:16px;
+button:hover{
+background:#ff3b3b;
+color:black;
+box-shadow:0 0 60px red;
+transform:translateY(-2px)
 }
 
 footer{
@@ -131,83 +114,52 @@ bottom:12px;
 width:100%;
 text-align:center;
 font-size:.85rem;
-color:#6a7cff;
+color:#6a7cff
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="nav">
 <a href="#">Home</a>
-<a href="#about">About</a>
 <a href="join.html">Apply</a>
 </div>
 
-<canvas id="bg"></canvas>
+<canvas id="bg" data-mode="home"></canvas>
 
 <div class="center">
-
-<div class="stars">
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
-</div>
-
 <div class="shimmer" data-text="Cyber Raptors">Cyber Raptors</div>
+<div class="club">Eagle Crest High School Cybersecurity Club</div>
 
-<div class="club-line">Eaglecrest High School Cybersecurity Club</div>
-
-<p>Helping students understand how digital systems work and how to protect them.</p>
+<div class="desc">
+Helping students understand how digital systems work and how to protect them.  
+No experience required. Any grade can join.
+</div>
 
 <div class="buttons">
 <button onclick="location.href='join.html'">Apply to Join</button>
-
-<button class="social" onclick="window.open('https://discord.gg/7RfR34ascE','_blank')">
-<img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg"> Discord
-</button>
-
-<button class="social" onclick="window.open('https://www.instagram.com/ehs_cybersecurity_club','_blank')">
-<img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg"> Instagram
-</button>
 </div>
-
 </div>
-
-<section id="about">
-<h2>About Cyber Raptors</h2>
-<p>The Cyber Raptors club teaches students cybersecurity fundamentals, networking concepts, and artificial intelligence ideas in an approachable way.</p>
-<p>No experience is required — the goal is understanding technology instead of just using it.</p>
-</section>
 
 <footer>Made For Students By a Student</footer>
 
 <script>
-/* RED CONNECTIONS + BLUE NODES */
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
+const mode=canvas.dataset.mode;
 
-function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
-addEventListener("resize",resize);resize();
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener("resize",resize);
+resize();
 
 const nodes=[];
-const MAX_DIST=220;
-
 for(let i=0;i<160;i++){
-nodes.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-.5)*.4,
-vy:(Math.random()-.5)*.4
-});
+nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});
 }
 
-function animate(){
+function draw(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-
 for(let i=0;i<nodes.length;i++){
 const n=nodes[i];
 n.x+=n.vx;n.y+=n.vy;
@@ -222,8 +174,8 @@ ctx.fill();
 for(let j=i+1;j<nodes.length;j++){
 const m=nodes[j];
 const d=Math.hypot(n.x-m.x,n.y-m.y);
-if(d<MAX_DIST){
-ctx.strokeStyle=`rgba(255,0,0,${1-d/MAX_DIST})`;
+if(d<220){
+ctx.strokeStyle="rgba(255,0,0,"+(1-d/220)+")";
 ctx.beginPath();
 ctx.moveTo(n.x,n.y);
 ctx.lineTo(m.x,m.y);
@@ -231,9 +183,9 @@ ctx.stroke();
 }
 }
 }
-requestAnimationFrame(animate);
+requestAnimationFrame(draw);
 }
-animate();
+draw();
 </script>
 
 </body>
