@@ -8,9 +8,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-
 body{background:black;color:white;overflow-x:hidden}
-
 canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
 
 .nav{
@@ -58,29 +56,9 @@ gap:14px;
 padding:110px 14px 70px 14px
 }
 
-.stars{
-display:flex;
-gap:8px;
-margin-bottom:6px
-}
-
-.star{
-font-size:26px;
-color:#ff0000;
-position:relative;
-text-shadow:0 0 8px red,0 0 20px red,0 0 50px red
-}
-
-.star::after{
-content:"★";
-position:absolute;
-left:0;
-top:0;
-color:#00ccff;
-opacity:.5;
-filter:blur(2px);
-animation:blueflow 2.5s linear infinite
-}
+.stars{display:flex;gap:8px;margin-bottom:6px}
+.star{font-size:26px;color:#ff0000;text-shadow:0 0 8px red,0 0 20px red,0 0 50px red;position:relative}
+.star::after{content:"★";position:absolute;left:0;top:0;color:#00ccff;opacity:.5;filter:blur(2px);animation:blueflow 2.5s linear infinite}
 
 @keyframes blueflow{
 0%{clip-path:polygon(-40% 0%,-20% 0%,0% 100%,-20% 100%)}
@@ -115,28 +93,25 @@ animation:sweep 3.5s linear infinite
 100%{clip-path:polygon(110% 0%,130% 0%,120% 100%,100% 100%)}
 }
 
-.club{
-color:#3aa7ff;
-text-shadow:0 0 14px #3aa7ff;
-font-size:clamp(.95rem,4vw,1.25rem);
-margin-top:6px
+.club{color:#3aa7ff;text-shadow:0 0 14px #3aa7ff;font-size:clamp(.95rem,4vw,1.25rem);margin-top:6px}
+.desc{max-width:620px;color:#d0d8ff;line-height:1.5;font-size:clamp(.95rem,4vw,1.1rem);padding:0 6px}
+
+.buttons{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap;justify-content:center}
+
+.mainbtn{
+background:#ff0000;
+border:2px solid #ff3b3b;
+color:white;
+padding:16px 30px;
+border-radius:12px;
+cursor:pointer;
+font-weight:900;
+font-size:1.15rem;
+box-shadow:0 0 30px red,0 0 80px rgba(0,200,255,.8);
+transition:.2s
 }
 
-.desc{
-max-width:620px;
-color:#d0d8ff;
-line-height:1.5;
-font-size:clamp(.95rem,4vw,1.1rem);
-padding:0 6px
-}
-
-.buttons{
-display:flex;
-gap:14px;
-margin-top:18px;
-flex-wrap:wrap;
-justify-content:center
-}
+.mainbtn:hover{transform:translateY(-2px);box-shadow:0 0 60px red,0 0 140px rgba(0,200,255,1)}
 
 button{
 background:transparent;
@@ -151,21 +126,31 @@ box-shadow:0 0 15px red,0 0 40px rgba(0,200,255,.7);
 font-size:clamp(.9rem,3.8vw,1rem)
 }
 
-button:hover{
-background:#ff3b3b;
-color:black;
-box-shadow:0 0 45px red,0 0 100px rgba(0,200,255,1);
-transform:translateY(-2px)
+button:hover{background:#ff3b3b;color:black;box-shadow:0 0 45px red,0 0 100px rgba(0,200,255,1)}
+
+.about{
+position:relative;
+padding:120px 20px;
+text-align:center;
+max-width:900px;
+margin:auto
 }
 
-footer{
-position:fixed;
-bottom:8px;
-width:100%;
-text-align:center;
-font-size:.75rem;
-color:#6a7cff
+.about h2{
+font-size:2.2rem;
+color:#ff3b3b;
+text-shadow:0 0 20px red;
+margin-bottom:20px
 }
+
+.about p{
+color:#d0d8ff;
+line-height:1.7;
+margin-bottom:16px;
+font-size:1.05rem
+}
+
+footer{position:fixed;bottom:8px;width:100%;text-align:center;font-size:.75rem;color:#6a7cff}
 
 @media (max-width:600px){
 .nav{gap:10px;padding:10px 6px}
@@ -181,6 +166,7 @@ color:#6a7cff
 
 <div class="nav">
 <a href="#">Home</a>
+<a href="#about">About</a>
 <a href="join.html">Apply</a>
 <a href="https://www.instagram.com/ehs_cybersecurity_club?igsh=amd6Nnk5MndjOWpk" target="_blank">Instagram</a>
 <a href="https://discord.gg/7RfR34ascE" target="_blank">Discord</a>
@@ -208,31 +194,37 @@ Helping students understand how digital systems work and how to protect them. No
 </div>
 
 <div class="buttons">
-<button onclick="location.href='join.html'">Apply to Join</button>
+<button class="mainbtn" onclick="location.href='join.html'">Apply to Join</button>
 <button onclick="window.open('https://discord.gg/7RfR34ascE','_blank')">Discord</button>
 <button onclick="window.open('https://www.instagram.com/ehs_cybersecurity_club?igsh=amd6Nnk5MndjOWpk','_blank')">Instagram</button>
 </div>
 
 </div>
 
+<section class="about" id="about">
+<h2>About the Club</h2>
+
+<p>We are a club at Eaglecrest High School focused on learning cybersecurity concepts and artificial intelligence development. Our goal is to understand how the internet and security tools function internally and to recognize when and how they should be used for defense.</p>
+
+<p>The organization does not support unauthorized access or misuse of technology. Instead, it promotes responsible security practices and awareness within the digital world.</p>
+
+<p>The club is open to students with no prior experience who are interested in learning. It also provides a competitive environment for students who already have technical background and wish to improve their skills while collaborating with others at the school.</p>
+
+<canvas id="aboutbg"></canvas>
+
+</section>
+
 <footer>Made For Students By a Student</footer>
 
 <script>
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
-
 function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
 window.addEventListener("resize",resize);
 resize();
 
-const mobile=window.innerWidth<700;
-const count=mobile?90:160;
-const maxDist=mobile?170:220;
-
 const nodes=[];
-for(let i=0;i<count;i++){
-nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
-}
+for(let i=0;i<150;i++){nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});}
 
 function draw(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -250,8 +242,8 @@ ctx.fill();
 for(let j=i+1;j<nodes.length;j++){
 const m=nodes[j];
 const d=Math.hypot(n.x-m.x,n.y-m.y);
-if(d<maxDist){
-ctx.strokeStyle="rgba(255,0,0,"+(1-d/maxDist)+")";
+if(d<220){
+ctx.strokeStyle="rgba(255,0,0,"+(1-d/220)+")";
 ctx.beginPath();
 ctx.moveTo(n.x,n.y);
 ctx.lineTo(m.x,m.y);
@@ -262,6 +254,44 @@ ctx.stroke();
 requestAnimationFrame(draw);
 }
 draw();
+
+const ac=document.getElementById("aboutbg");
+const actx=ac.getContext("2d");
+function aresize(){ac.width=ac.offsetWidth;ac.height=ac.offsetHeight}
+window.addEventListener("resize",aresize);
+aresize();
+
+const anodes=[];
+for(let i=0;i<90;i++){anodes.push({x:Math.random()*ac.width,y:Math.random()*ac.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});}
+
+function adraw(){
+actx.clearRect(0,0,ac.width,ac.height);
+for(let i=0;i<anodes.length;i++){
+const n=anodes[i];
+n.x+=n.vx;n.y+=n.vy;
+if(n.x<0||n.x>ac.width)n.vx*=-1;
+if(n.y<0||n.y>ac.height)n.vy*=-1;
+
+actx.fillStyle="#ff0000";
+actx.beginPath();
+actx.arc(n.x,n.y,2,0,Math.PI*2);
+actx.fill();
+
+for(let j=i+1;j<anodes.length;j++){
+const m=anodes[j];
+const d=Math.hypot(n.x-m.x,n.y-m.y);
+if(d<170){
+actx.strokeStyle="rgba(0,150,255,"+(1-d/170)+")";
+actx.beginPath();
+actx.moveTo(n.x,n.y);
+actx.lineTo(m.x,m.y);
+actx.stroke();
+}
+}
+}
+requestAnimationFrame(adraw);
+}
+adraw();
 </script>
 
 </body>
