@@ -11,64 +11,33 @@
 
 body{background:black;color:white;overflow-x:hidden}
 
-#bg{
-position:fixed;
-top:0;
-left:0;
-width:100vw;
-height:100vh;
-z-index:-1
-}
+#bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1}
 
 .nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-padding:12px 10px;
-z-index:10;
-flex-wrap:wrap;
+position:fixed;top:0;left:0;width:100%;
+display:flex;justify-content:center;align-items:center;gap:10px;
+padding:12px 10px;z-index:10;flex-wrap:wrap;
 background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.35),rgba(0,0,0,0));
 backdrop-filter:blur(6px)
 }
 
 .nav a{
-text-decoration:none;
-font-weight:800;
-padding:8px 14px;
-border-radius:12px;
-color:#ff3b3b;
-border:2px solid rgba(255,0,0,.6);
+text-decoration:none;font-weight:800;padding:8px 14px;border-radius:12px;
+color:#ff3b3b;border:2px solid rgba(255,0,0,.6);
 box-shadow:0 0 12px red,0 0 30px rgba(0,200,255,.6);
-transition:.25s;
-font-size:.9rem
+transition:.25s;font-size:.9rem
 }
 
-.nav a:hover{
-background:#ff3b3b;
-color:black;
-box-shadow:0 0 45px red,0 0 110px rgba(0,200,255,1)
-}
+.nav a:hover{background:#ff3b3b;color:black;box-shadow:0 0 45px red,0 0 110px rgba(0,200,255,1)}
 
 .center{
-min-height:100svh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-gap:14px;
-padding:110px 14px 70px 14px
+min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+text-align:center;gap:14px;padding:110px 14px 70px 14px
 }
 
 .stars{display:flex;gap:8px;margin-bottom:4px}
 .star{
-font-size:26px;
-color:#ff0000;
+font-size:26px;color:#ff0000;
 text-shadow:0 0 10px red,0 0 30px red,0 0 60px red;
 animation:starpulse 3s ease-in-out infinite alternate
 }
@@ -79,24 +48,13 @@ to{text-shadow:0 0 20px red,0 0 60px red,0 0 120px #00ccff}
 }
 
 .shimmer{
-font-size:clamp(2.2rem,9vw,5rem);
-font-weight:900;
-letter-spacing:2px;
-color:#ff0000;
-position:relative;
-text-shadow:0 0 20px red,0 0 60px red,0 0 120px red;
-line-height:1.05
+font-size:clamp(2.2rem,9vw,5rem);font-weight:900;letter-spacing:2px;color:#ff0000;
+position:relative;text-shadow:0 0 20px red,0 0 60px red,0 0 120px red;line-height:1.05
 }
 
 .shimmer::after{
-content:attr(data-text);
-position:absolute;
-left:0;
-top:0;
-width:100%;
-height:100%;
-color:#00ccff;
-clip-path:polygon(-30% 0%,-10% 0%,0% 100%,-20% 100%);
+content:attr(data-text);position:absolute;left:0;top:0;width:100%;height:100%;
+color:#00ccff;clip-path:polygon(-30% 0%,-10% 0%,0% 100%,-20% 100%);
 text-shadow:0 0 25px #00ccff,0 0 80px #00ccff,0 0 140px #00ccff;
 animation:sweep 3.5s linear infinite
 }
@@ -108,59 +66,53 @@ animation:sweep 3.5s linear infinite
 
 .club{color:#3aa7ff;text-shadow:0 0 14px #3aa7ff;font-size:clamp(.95rem,4vw,1.25rem);margin-top:6px}
 
-.desc{max-width:620px;color:#d0d8ff;line-height:1.5;font-size:clamp(.95rem,4vw,1.1rem);padding:0 6px}
+.desc{
+max-width:620px;
+color:#00ccff;
+text-shadow:0 0 10px #00ccff,0 0 30px #00ccff;
+line-height:1.5;
+font-size:clamp(.95rem,4vw,1.1rem);
+padding:0 6px
+}
 
 .buttons{display:flex;gap:14px;margin-top:18px;flex-wrap:wrap;justify-content:center}
 
 .mainbtn{
-background:#ff0000;
-border:2px solid #ff3b3b;
-color:white;
-padding:18px 36px;
+background:black;
+border:2px solid #ff0000;
+color:#ff3b3b;
+padding:18px 40px;
 border-radius:14px;
 cursor:pointer;
-font-weight:900;
-font-size:1.2rem;
-box-shadow:0 0 40px red,0 0 100px rgba(0,200,255,.9);
-transition:.2s
+font-weight:700;
+font-size:1.25rem;
+box-shadow:0 0 35px red,0 0 90px rgba(0,200,255,.5);
+transition:.25s
 }
 
-.mainbtn:hover{transform:translateY(-2px);box-shadow:0 0 80px red,0 0 180px rgba(0,200,255,1)}
+.mainbtn:hover{
+background:#0a0000;
+color:#ff0000;
+transform:translateY(-2px);
+box-shadow:0 0 80px red,0 0 160px rgba(0,200,255,1)
+}
 
 button{
-background:transparent;
-border:2px solid #ff3b3b;
-color:#ff3b3b;
-padding:12px 20px;
-border-radius:10px;
-cursor:pointer;
-transition:.2s;
-font-weight:800;
-box-shadow:0 0 15px red,0 0 40px rgba(0,200,255,.7);
-font-size:clamp(.9rem,3.8vw,1rem)
+background:transparent;border:2px solid #ff3b3b;color:#ff3b3b;
+padding:12px 20px;border-radius:10px;cursor:pointer;transition:.2s;font-weight:800;
+box-shadow:0 0 15px red,0 0 40px rgba(0,200,255,.7);font-size:clamp(.9rem,3.8vw,1rem)
 }
 
 button:hover{background:#ff3b3b;color:black;box-shadow:0 0 45px red,0 0 100px rgba(0,200,255,1)}
 
-.about{
-padding:100px 18px 120px 18px;
-text-align:center;
-max-width:900px;
-margin:auto
-}
+.about{padding:100px 18px 120px 18px;text-align:center;max-width:900px;margin:auto}
 
-.about h2{
-font-size:2.2rem;
-color:#ff3b3b;
-text-shadow:0 0 20px red;
-margin-bottom:20px
-}
+.about h2{font-size:2.2rem;color:#00ccff;text-shadow:0 0 18px #00ccff,0 0 50px #00ccff;margin-bottom:20px}
 
 .about p{
-color:#d0d8ff;
-line-height:1.7;
-margin-bottom:16px;
-font-size:1.05rem
+color:#00ccff;
+text-shadow:0 0 8px #00ccff,0 0 25px #00ccff;
+line-height:1.7;margin-bottom:16px;font-size:1.05rem
 }
 
 footer{position:fixed;bottom:8px;width:100%;text-align:center;font-size:.75rem;color:#6a7cff}
@@ -229,10 +181,7 @@ Helping students understand how digital systems work and how to protect them. No
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
 
-function resize(){
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-}
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
 window.addEventListener("resize",resize);
 resize();
 
@@ -242,12 +191,7 @@ const MAX_DIST=isMobile?140:230;
 
 const nodes=[];
 for(let i=0;i<NODE_COUNT;i++){
-nodes.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-.5)*(isMobile?.35:.55),
-vy:(Math.random()-.5)*(isMobile?.35:.55)
-});
+nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*(isMobile?.35:.55),vy:(Math.random()-.5)*(isMobile?.35:.55)});
 }
 
 function animate(){
@@ -256,13 +200,12 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 
 for(let i=0;i<nodes.length;i++){
 const n=nodes[i];
-n.x+=n.vx;
-n.y+=n.vy;
-
+n.x+=n.vx;n.y+=n.vy;
 if(n.x<0||n.x>canvas.width)n.vx*=-1;
 if(n.y<0||n.y>canvas.height)n.vy*=-1;
 
-ctx.fillStyle="#ff0000";
+const blueDot=Math.random()<0.15;
+ctx.fillStyle=blueDot?"#00ccff":"#ff0000";
 ctx.beginPath();
 ctx.arc(n.x,n.y,2,0,Math.PI*2);
 ctx.fill();
@@ -271,7 +214,8 @@ for(let j=i+1;j<nodes.length;j++){
 const m=nodes[j];
 const d=Math.hypot(n.x-m.x,n.y-m.y);
 if(d<MAX_DIST){
-ctx.strokeStyle="rgba(0,180,255,"+(1-d/MAX_DIST)+")";
+const blueLine=Math.random()<0.15;
+ctx.strokeStyle=blueLine?"rgba(0,200,255,"+(1-d/MAX_DIST)+")":"rgba(255,0,0,"+(1-d/MAX_DIST)+")";
 ctx.beginPath();
 ctx.moveTo(n.x,n.y);
 ctx.lineTo(m.x,m.y);
