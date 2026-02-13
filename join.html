@@ -1,213 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Apply Cyber Raptors</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Apply · Cyber Raptors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+    }
 
-body{background:black;color:white;overflow-x:hidden}
+    body {
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
 
-canvas{position:fixed;inset:0;z-index:-1;pointer-events:none}
+    canvas {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+    }
 
-.wrapper{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:60px 20px
-}
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
 
-.form-box{
-width:100%;
-max-width:560px;
-padding:40px;
-border-radius:22px;
-background:rgba(0,0,0,.82);
-border:2px solid rgba(0,120,180,.25);
-box-shadow:0 0 30px red,0 0 85px rgba(255,0,0,.45);
-backdrop-filter:blur(14px)
-}
+    .form-box {
+      width: 100%;
+      max-width: 560px;
+      padding: 42px;
+      border-radius: 22px;
 
-h1{text-align:center;font-size:2.5rem;color:#ff0000;text-shadow:0 0 15px red,0 0 45px red,0 0 90px red}
+      background: rgba(0, 0, 0, 0.82);
 
-p{text-align:center;margin:12px 0 30px;color:#b8dfff}
+      border: 2px solid rgba(0, 120, 180, 0.25);
 
-label{display:block;margin-top:18px;font-weight:700;color:#ff4444}
+      box-shadow:
+        0 0 30px rgba(255, 0, 0, 0.75),
+        0 0 85px rgba(255, 0, 0, 0.45),
+        0 0 20px rgba(0, 120, 180, 0.15);
 
-input,select,textarea{
-width:100%;
-margin-top:7px;
-padding:13px;
-border-radius:12px;
-border:2px solid rgba(255,0,0,.55);
-background:rgba(0,0,0,.7);
-color:white;
-outline:none;
-box-shadow:0 0 10px rgba(255,0,0,.25)
-}
+      backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 0.8s ease;
+    }
 
-input:focus,textarea:focus,select:focus{
-border-color:#ff0000;
-box-shadow:0 0 20px red
-}
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-textarea{resize:none;height:95px}
+    h1 {
+      text-align: center;
+      font-size: 2.7rem;
+      font-weight: 900;
+      color: #ff0000;
 
-button{
-width:100%;
-margin-top:30px;
-padding:16px;
-border-radius:14px;
-border:none;
-font-size:1.1rem;
-font-weight:900;
-cursor:pointer;
-background:linear-gradient(90deg,#ff0000,#140000,#ff0000);
-color:white;
-box-shadow:0 0 30px red,0 0 70px rgba(255,0,0,.55)
-}
+      text-shadow:
+        0 0 15px rgba(255, 0, 0, 1),
+        0 0 45px rgba(255, 0, 0, 0.7),
+        0 0 90px rgba(255, 0, 0, 0.55);
+    }
 
-.status{text-align:center;margin-top:20px;font-weight:900;color:#ff0000}
-</style>
+    p {
+      text-align: center;
+      margin-top: 12px;
+      margin-bottom: 32px;
+      color: #b8dfff;
+      font-size: 1.05rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 750;
+      color: rgba(255, 60, 60, 0.95);
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.35);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      margin-top: 7px;
+      padding: 13px;
+      border-radius: 12px;
+
+      border: 2px solid rgba(255, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.7);
+
+      color: white;
+      font-size: 1rem;
+      outline: none;
+
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.25);
+      transition: 0.25s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #ff0000;
+      box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.9);
+    }
+
+    textarea {
+      resize: none;
+      height: 95px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 34px;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+
+      font-size: 1.15rem;
+      font-weight: 900;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+
+      background: linear-gradient(
+        90deg,
+        #ff0000,
+        #140000,
+        #ff0000
+      );
+
+      color: white;
+
+      box-shadow:
+        0 0 30px rgba(255, 0, 0, 0.85),
+        0 0 70px rgba(255, 0, 0, 0.55);
+
+      transition: transform 0.25s ease;
+    }
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 60%;
+      height: 100%;
+
+      background: rgba(255, 255, 255, 0.25);
+      transform: skewX(-25deg);
+
+      animation: buttonSweep 2.8s infinite;
+    }
+
+    @keyframes buttonSweep {
+      0% { left: -120%; }
+      50% { left: 120%; }
+      100% { left: 120%; }
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 45px rgba(255, 0, 0, 1),
+        0 0 95px rgba(255, 0, 0, 0.75);
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 900;
+      font-size: 1.05rem;
+      min-height: 26px;
+
+      color: #ff0000;
+
+      text-shadow:
+        0 0 12px rgba(255, 0, 0, 0.85),
+        0 0 35px rgba(255, 0, 0, 0.65);
+
+      animation: statusPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% {
+        text-shadow:
+          0 0 10px rgba(255, 0, 0, 0.65),
+          0 0 25px rgba(255, 0, 0, 0.45);
+      }
+      50% {
+        text-shadow:
+          0 0 20px rgba(255, 0, 0, 1),
+          0 0 60px rgba(255, 0, 0, 0.95);
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<canvas id="bg" data-mode="apply"></canvas>
+<canvas id="bg"></canvas>
 
 <div class="wrapper">
-<div class="form-box">
+  <div class="form-box">
 
-<h1>Apply to Join</h1>
-<p>Cyber Raptors Application</p>
+    <h1>Apply to Join</h1>
+    <p>Cyber Raptors Application Form</p>
 
-<form id="applyForm">
+    <form id="applyForm">
 
-<label>Full Name</label>
-<input id="full_name" required>
+      <label>Full Name *</label>
+      <input id="full_name" required />
 
-<label>Grade</label>
-<select id="grade" required>
-<option value="">Select</option>
-<option>9</option>
-<option>10</option>
-<option>11</option>
-<option>12</option>
-</select>
+      <label>Grade *</label>
+      <select id="grade" required>
+        <option value="">Select</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
 
-<label>Email</label>
-<input id="email" type="email" required>
+      <label>Email *</label>
+      <input id="email" type="email" required />
 
-<label>Experience</label>
-<textarea id="experience"></textarea>
+      <label>Cybersecurity Experience</label>
+      <textarea id="experience"></textarea>
 
-<label>Help manage club</label>
-<select id="help_manage">
-<option value="">Select</option>
-<option value="yes">Yes</option>
-<option value="no">No</option>
-<option value="prefer_not">Prefer not to answer</option>
-</select>
+      <label>Would you like to help manage club activities?</label>
+      <select id="help_manage">
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="prefer_not">Prefer not to answer</option>
+      </select>
 
-<label>Best meeting day</label>
-<select id="meeting_day">
-<option value="">Select</option>
-<option>Monday</option>
-<option>Tuesday</option>
-<option>Wednesday</option>
-<option>Thursday</option>
-<option>Friday</option>
-</select>
+      <label>Best Meeting Day Fit</label>
+      <select id="meeting_day">
+        <option value="">Select</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+      </select>
 
-<label>Why do you want to join</label>
-<textarea id="why_join"></textarea>
+      <label>Why do you want to join?</label>
+      <textarea id="why_join"></textarea>
 
-<button type="submit" id="submitBtn">Submit Application</button>
+      <button id="submitBtn" type="submit">
+        Submit Application
+      </button>
 
-<div class="status" id="status"></div>
+      <div class="status" id="status"></div>
 
-</form>
-</div>
+    </form>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL="https://xgvqmtumbtfvfuxodbhz.supabase.";
-const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhndnFtdHVtYnRmdmZ1eG9kYmh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1NTMxNTgsImV4cCI6MjA4NTEyOTE1OH0.qxiyoFRVmtD-P4T92u0hvaIR-tqhOj6PmsUzhOAcPuE";
+ const SUPABASE_URL = "https://xgvqmtumbtfvfuxodbhz.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhndnFtdHVtYnRmdmZ1eG9kYmh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1NTMxNTgsImV4cCI6MjA4NTEyOTE1OH0.qxiyoFRVmtD-P4T92u0hvaIR-tqhOj6PmsUzhOAcPuE";
 
-const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-const form=document.getElementById("applyForm");
-const status=document.getElementById("status");
+  const form = document.getElementById("applyForm");
+  const statusText = document.getElementById("status");
+  const submitBtn = document.getElementById("submitBtn");
 
-form.addEventListener("submit",async(e)=>{
-e.preventDefault();
-status.textContent="Submitting...";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-const data={
-full_name:document.getElementById("full_name").value.trim(),
-grade:document.getElementById("grade").value,
-email:document.getElementById("email").value.trim(),
-experience:document.getElementById("experience").value.trim(),
-help_manage:document.getElementById("help_manage").value,
-meeting_day:document.getElementById("meeting_day").value,
-why_join:document.getElementById("why_join").value.trim()
-};
+    statusText.textContent = "Submitting...";
+    submitBtn.disabled = true;
 
-const {error}=await supabase.from("applications1").insert([data]);
+    const data = {
+      full_name: document.getElementById("full_name").value.trim(),
+      grade: document.getElementById("grade").value,
+      email: document.getElementById("email").value.trim(),
+      experience: document.getElementById("experience").value.trim(),
+      help_manage: document.getElementById("help_manage").value,
+      meeting_day: document.getElementById("meeting_day").value,
+      why_join: document.getElementById("why_join").value.trim()
+    };
 
-if(error){
-status.textContent="Error: "+error.message;
-}else{
-status.textContent="Application submitted successfully";
-form.reset();
-}
-});
+    const { error } = await supabaseClient
+      .from("applications1")
+      .insert([data]);
 
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
+    if (error) {
+      statusText.textContent = "Error: " + error.message;
+    } else {
+      statusText.textContent = "Application submitted successfully";
+      form.reset();
+    }
 
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
-window.addEventListener("resize",resize);
-resize();
+    submitBtn.disabled = false;
+  });
+</script>
 
-const nodes=[];
-for(let i=0;i<120;i++){
-nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5});
-}
+<script>
+  const canvas = document.getElementById("bg");
+  const ctx = canvas.getContext("2d");
 
-function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-for(let i=0;i<nodes.length;i++){
-const n=nodes[i];
-n.x+=n.vx;n.y+=n.vy;
-if(n.x<0||n.x>canvas.width)n.vx*=-1;
-if(n.y<0||n.y>canvas.height)n.vy*=-1;
+  function resize() {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+  }
+  addEventListener("resize", resize);
+  resize();
 
-ctx.fillStyle="#ff0000";
-ctx.beginPath();
-ctx.arc(n.x,n.y,2,0,Math.PI*2);
-ctx.fill();
+  const nodes = [];
+  const NODE_COUNT = 120;
+  const MAX_DIST = 170;
 
-for(let j=i+1;j<nodes.length;j++){
-const m=nodes[j];
-const d=Math.hypot(n.x-m.x,n.y-m.y);
-if(d<170){
-ctx.strokeStyle="rgba(0,120,180,"+(1-d/170)+")";
-ctx.beginPath();
-ctx.moveTo(n.x,n.y);
-ctx.lineTo(m.x,m.y);
-ctx.stroke();
-}
-}
-}
-requestAnimationFrame(draw);
-}
-draw();
+  for (let i = 0; i < NODE_COUNT; i++) {
+    nodes.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.55,
+      vy: (Math.random() - 0.5) * 0.55
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+
+      n.x += n.vx;
+      n.y += n.vy;
+
+      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+      ctx.fillStyle = "#ff0000";
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      for (let j = i + 1; j < nodes.length; j++) {
+        const m = nodes[j];
+        const d = Math.hypot(n.x - m.x, n.y - m.y);
+
+        if (d < MAX_DIST) {
+          ctx.strokeStyle =
+            `rgba(0,120,180,${0.25 * (1 - d / MAX_DIST)})`;
+
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(m.x, m.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 </script>
 
 </body>
