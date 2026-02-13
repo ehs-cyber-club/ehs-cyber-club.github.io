@@ -28,22 +28,22 @@ width:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-gap:12px;
-padding:12px 8px;
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(10px);
+gap:10px;
+padding:12px 10px;
 z-index:10;
-flex-wrap:wrap
+flex-wrap:wrap;
+background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.35),rgba(0,0,0,0));
+backdrop-filter:blur(6px)
 }
 
 .nav a{
 text-decoration:none;
 font-weight:800;
 padding:8px 14px;
-border-radius:10px;
+border-radius:12px;
 color:#ff3b3b;
-border:2px solid #ff3b3b;
-box-shadow:0 0 12px red,0 0 25px rgba(0,200,255,.7);
+border:2px solid rgba(255,0,0,.6);
+box-shadow:0 0 12px red,0 0 30px rgba(0,200,255,.6);
 transition:.25s;
 font-size:.9rem
 }
@@ -51,7 +51,7 @@ font-size:.9rem
 .nav a:hover{
 background:#ff3b3b;
 color:black;
-box-shadow:0 0 40px red,0 0 90px rgba(0,200,255,1)
+box-shadow:0 0 45px red,0 0 110px rgba(0,200,255,1)
 }
 
 .center{
@@ -65,7 +65,7 @@ gap:14px;
 padding:110px 14px 70px 14px
 }
 
-.stars{display:flex;gap:8px;margin-bottom:6px}
+.stars{display:flex;gap:8px;margin-bottom:4px}
 .star{
 font-size:26px;
 color:#ff0000;
@@ -75,7 +75,7 @@ animation:starpulse 3s ease-in-out infinite alternate
 
 @keyframes starpulse{
 from{text-shadow:0 0 10px red,0 0 30px red,0 0 60px red}
-to{text-shadow:0 0 20px red,0 0 50px red,0 0 100px #00ccff}
+to{text-shadow:0 0 20px red,0 0 60px red,0 0 120px #00ccff}
 }
 
 .shimmer{
@@ -229,50 +229,55 @@ Helping students understand how digital systems work and how to protect them. No
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
 
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
 window.addEventListener("resize",resize);
 resize();
 
-const particles=[];
-for(let i=0;i<140;i++){
-particles.push({
+const isMobile=window.innerWidth<700;
+const NODE_COUNT=isMobile?70:150;
+const MAX_DIST=isMobile?140:230;
+
+const nodes=[];
+for(let i=0;i<NODE_COUNT;i++){
+nodes.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-vx:(Math.random()-.5)*.6,
-vy:(Math.random()-.5)*.6,
-size:Math.random()*2+1
+vx:(Math.random()-.5)*(isMobile?.35:.55),
+vy:(Math.random()-.5)*(isMobile?.35:.55)
 });
 }
 
 function animate(){
-ctx.fillStyle="rgba(10,0,0,.25)";
+ctx.fillStyle="rgba(0,0,0,.35)";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-for(let p of particles){
-p.x+=p.vx;
-p.y+=p.vy;
+for(let i=0;i<nodes.length;i++){
+const n=nodes[i];
+n.x+=n.vx;
+n.y+=n.vy;
 
-if(p.x<0||p.x>canvas.width)p.vx*=-1;
-if(p.y<0||p.y>canvas.height)p.vy*=-1;
+if(n.x<0||n.x>canvas.width)n.vx*=-1;
+if(n.y<0||n.y>canvas.height)n.vy*=-1;
 
-ctx.fillStyle="rgba(0,0,0,.9)";
+ctx.fillStyle="#ff0000";
 ctx.beginPath();
-ctx.arc(p.x,p.y,p.size+2,0,Math.PI*2);
+ctx.arc(n.x,n.y,2,0,Math.PI*2);
 ctx.fill();
 
-const glow=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,120);
-glow.addColorStop(0,"rgba(255,0,0,.45)");
-glow.addColorStop(.5,"rgba(255,0,0,.15)");
-glow.addColorStop(1,"rgba(0,0,0,0)");
-ctx.fillStyle=glow;
+for(let j=i+1;j<nodes.length;j++){
+const m=nodes[j];
+const d=Math.hypot(n.x-m.x,n.y-m.y);
+if(d<MAX_DIST){
+ctx.strokeStyle="rgba(0,180,255,"+(1-d/MAX_DIST)+")";
 ctx.beginPath();
-ctx.arc(p.x,p.y,120,0,Math.PI*2);
-ctx.fill();
-
-ctx.fillStyle="#00ccff";
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-ctx.fill();
+ctx.moveTo(n.x,n.y);
+ctx.lineTo(m.x,m.y);
+ctx.stroke();
+}
+}
 }
 requestAnimationFrame(animate);
 }
