@@ -2,209 +2,191 @@
 
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"/>
 <title>Cyber Raptors · EHS Cybersecurity Club</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <style>
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif;}
+body{background:black;color:white;overflow-x:hidden;}
+canvas{position:fixed;inset:0;z-index:-1}
 
-body{
-  background:black;
-  color:white;
-  overflow:hidden;
-  padding-top:70px;
+/* ---------- NAV ---------- */
+.nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:40px;
+padding:14px;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(8px);
+z-index:5;
+}
+.nav a{
+color:#9fdcff;
+text-decoration:none;
+font-weight:700;
+letter-spacing:.5px;
+transition:.25s;
+}
+.nav a:hover{
+color:#ff3b3b;
+text-shadow:0 0 12px red;
 }
 
-/* NAVBAR */
-.navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:64px;
-  background:rgba(0,0,0,.6);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,0,0,.4);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 30px;
-  z-index:50;
-}
-
-.nav-title{
-  font-weight:900;
-  color:#ff3b3b;
-  text-shadow:0 0 12px red;
-}
-
-.nav-links a{
-  margin-left:28px;
-  text-decoration:none;
-  color:#cfe6ff;
-  font-weight:600;
-  transition:.2s;
-}
-
-.nav-links a:hover{
-  color:#ff3b3b;
-  text-shadow:0 0 12px red;
-}
-
-/* FLOATING LOGO BADGE */
-.logo-badge{
-  position:fixed;
-  left:40px;
-  bottom:40px;
-  width:140px;
-  border-radius:50%;
-  filter:drop-shadow(0 0 20px #00bfff) drop-shadow(0 0 60px #00bfff);
-  animation:logoFloat 5s ease-in-out infinite;
-  z-index:5;
-}
-
-@keyframes logoFloat{
-  0%{transform:translateY(0px);}
-  50%{transform:translateY(-12px);}
-  100%{transform:translateY(0px);}
-}
-
-/* RED STAR */
-.star{
-  position:fixed;
-  top:20%;
-  right:14%;
-  width:20px;
-  height:20px;
-  background:red;
-  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-  box-shadow:0 0 12px red,0 0 30px red,0 0 70px red;
-  animation:starPulse 2s infinite ease-in-out;
-}
-
-@keyframes starPulse{
-  0%{transform:scale(.8);opacity:.6;}
-  50%{transform:scale(1.5);opacity:1;}
-  100%{transform:scale(.8);opacity:.6;}
-}
-
-/* CANVAS BACKGROUND */
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
-
+/* ---------- HERO ---------- */
 .center{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  gap:22px;
-  padding:20px;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+gap:20px;
+padding-top:70px;
 }
 
-.title{
-  font-size:clamp(3rem,6vw,5rem);
-  font-weight:900;
-  color:#ff0000;
-  text-shadow:0 0 20px red,0 0 60px red;
+.shimmer{
+font-size:clamp(3rem,6vw,5rem);
+font-weight:900;
+letter-spacing:2px;
+color:#ff0000;
+position:relative;
+text-shadow:0 0 20px red,0 0 60px red,0 0 120px red;
+}
+.shimmer::after{
+content:attr(data-text);
+position:absolute;
+left:0;top:0;
+width:100%;height:100%;
+color:#00ccff;
+clip-path:polygon(-30% 0%,-10% 0%,0% 100%,-20% 100%);
+text-shadow:0 0 25px #00ccff,0 0 80px #00ccff;
+animation:sweep 3.5s linear infinite;
+}
+@keyframes sweep{
+0%{clip-path:polygon(-30% 0%,-10% 0%,0% 100%,-20% 100%);}
+100%{clip-path:polygon(110% 0%,130% 0%,120% 100%,100% 100%);}
 }
 
-.club-line{
-  font-size:1.3rem;
-  color:#3aa7ff;
-  text-shadow:0 0 15px #3aa7ff;
+/* stars */
+.stars{
+display:flex;
+gap:18px;
+margin-bottom:-8px;
+}
+.star{
+width:18px;height:18px;
+background:red;
+clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+animation:starGlow 2s ease-in-out infinite alternate;
+box-shadow:0 0 15px red,0 0 35px red;
+}
+@keyframes starGlow{
+from{transform:translateY(0)}
+to{transform:translateY(-6px)}
 }
 
-p{
-  max-width:650px;
-  font-size:1.1rem;
-  color:#d0d8ff;
-  line-height:1.6;
-}
+.club-line{color:#3aa7ff;text-shadow:0 0 18px #3aa7ff;font-size:1.2rem;}
 
-.buttons{
-  display:flex;
-  gap:18px;
-  margin-top:25px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
+.buttons{display:flex;gap:18px;margin-top:25px;flex-wrap:wrap;justify-content:center;}
 button{
-  background:transparent;
-  border:2px solid #ff3b3b;
-  color:#ff3b3b;
-  padding:14px 30px;
-  border-radius:10px;
-  cursor:pointer;
-  box-shadow:0 0 20px rgba(255,0,0,.6);
-  transition:.2s;
+background:transparent;
+border:2px solid #ff3b3b;
+color:#ff3b3b;
+padding:14px 30px;
+border-radius:10px;
+cursor:pointer;
+transition:.2s;
+box-shadow:0 0 20px rgba(255,0,0,.55);
 }
+button:hover{background:#ff3b3b;color:black;box-shadow:0 0 60px red;transform:translateY(-2px);}
 
-button:hover{
-  background:#ff3b3b;
-  color:black;
-  box-shadow:0 0 55px red;
-  transform:translateY(-2px);
+.social img{width:18px;height:18px;filter:invert(1);}
+
+/* ---------- ABOUT ---------- */
+#about{
+padding:120px 20px;
+max-width:850px;
+margin:auto;
+text-align:center;
+}
+#about h2{
+font-size:2.2rem;
+color:#ff3b3b;
+margin-bottom:18px;
+text-shadow:0 0 20px red;
+}
+#about p{
+color:#d0d8ff;
+line-height:1.7;
+margin-bottom:16px;
 }
 
 footer{
-  position:fixed;
-  bottom:12px;
-  width:100%;
-  text-align:center;
-  font-size:.85rem;
-  color:#6a7cff;
+position:fixed;
+bottom:12px;
+width:100%;
+text-align:center;
+font-size:.85rem;
+color:#6a7cff;
 }
-
 </style>
 
 </head>
 
 <body>
 
-<nav class="navbar">
-  <div class="nav-title">Cyber Raptors</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="join.html">Apply</a>
-  </div>
-</nav>
-
-<img src="logo.png" class="logo-badge">
-<div class="star"></div>
+<div class="nav">
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="join.html">Apply</a>
+</div>
 
 <canvas id="bg"></canvas>
 
 <div class="center">
-  <div class="title">Cyber Raptors</div>
 
-  <div class="club-line">
-    Eaglecrest High School Cybersecurity Club
-  </div>
-
-  <p>
-    Helping students understand computers, networks, and artificial intelligence 
-    and how to protect digital systems safely and responsibly.
-  </p>
-
-  <div class="buttons">
-    <button onclick="location.href='join.html'">Apply to Join</button>
-  </div>
+<div class="stars">
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
 </div>
 
-<footer>
-Made For Students By Students.
-</footer>
+<div class="shimmer" data-text="Cyber Raptors">Cyber Raptors</div>
+
+<div class="club-line">Eaglecrest High School Cybersecurity Club</div>
+
+<p>Helping students understand how digital systems work and how to protect them.</p>
+
+<div class="buttons">
+<button onclick="location.href='join.html'">Apply to Join</button>
+
+<button class="social" onclick="window.open('https://discord.gg/7RfR34ascE','_blank')">
+<img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/discord.svg"> Discord
+</button>
+
+<button class="social" onclick="window.open('https://www.instagram.com/ehs_cybersecurity_club','_blank')">
+<img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/instagram.svg"> Instagram
+</button>
+</div>
+
+</div>
+
+<section id="about">
+<h2>About Cyber Raptors</h2>
+<p>The Cyber Raptors club teaches students cybersecurity fundamentals, networking concepts, and artificial intelligence ideas in an approachable way.</p>
+<p>No experience is required — the goal is understanding technology instead of just using it.</p>
+</section>
+
+<footer>Made For Students By a Student</footer>
 
 <script>
+/* RED CONNECTIONS + BLUE NODES */
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
 
@@ -212,15 +194,22 @@ function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
 addEventListener("resize",resize);resize();
 
 const nodes=[];
-for(let i=0;i<140;i++){
-nodes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});
+const MAX_DIST=220;
+
+for(let i=0;i<160;i++){
+nodes.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-.5)*.4,
+vy:(Math.random()-.5)*.4
+});
 }
 
 function animate(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
 for(let i=0;i<nodes.length;i++){
-let n=nodes[i];
+const n=nodes[i];
 n.x+=n.vx;n.y+=n.vy;
 if(n.x<0||n.x>canvas.width)n.vx*=-1;
 if(n.y<0||n.y>canvas.height)n.vy*=-1;
@@ -231,10 +220,10 @@ ctx.arc(n.x,n.y,2,0,Math.PI*2);
 ctx.fill();
 
 for(let j=i+1;j<nodes.length;j++){
-let m=nodes[j];
-let d=Math.hypot(n.x-m.x,n.y-m.y);
-if(d<200){
-ctx.strokeStyle=`rgba(255,0,0,${1-d/200})`;
+const m=nodes[j];
+const d=Math.hypot(n.x-m.x,n.y-m.y);
+if(d<MAX_DIST){
+ctx.strokeStyle=`rgba(255,0,0,${1-d/MAX_DIST})`;
 ctx.beginPath();
 ctx.moveTo(n.x,n.y);
 ctx.lineTo(m.x,m.y);
