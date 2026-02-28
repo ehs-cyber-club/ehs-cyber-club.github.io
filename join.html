@@ -25,7 +25,130 @@
       z-index: -2;
     }
 
-    .wrapper {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-weight: 900;
+      color: #ff0000;
+      text-shadow:
+        0 0 15px rgba(255,0,0,1),
+        0 0 45px rgba(255,0,0,0.7),
+        0 0 90px rgba(255,0,0,0.55);
+    }
+
+    .subtitle {
+      color: #b8dfff;
+      font-size: 1.05rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 750;
+      color: rgba(255,60,60,0.95);
+      text-shadow: 0 0 10px rgba(255,0,0,0.35);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      margin-top: 7px;
+      padding: 13px;
+      border-radius: 12px;
+      border: 2px solid rgba(255,0,0,0.55);
+      background: rgba(0,0,0,0.7);
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: 0 0 10px rgba(255,0,0,0.25);
+      transition: 0.25s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #ff0000;
+      box-shadow:
+        0 0 20px rgba(255,0,0,0.9),
+        0 0 6px rgba(0,180,255,0.3);
+    }
+
+    select option {
+      background: #0a0000;
+      color: white;
+    }
+
+    textarea { resize: none; height: 95px; }
+
+    .submit-btn {
+      border: none;
+      font-size: 1.15rem;
+      font-weight: 900;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, #ff0000, #140000, #ff0000);
+      color: white;
+      border-radius: 14px;
+      padding: 16px;
+      width: 100%;
+      box-shadow:
+        0 0 30px rgba(255,0,0,0.85),
+        0 0 70px rgba(255,0,0,0.55);
+      transition: transform 0.25s ease;
+    }
+
+    .submit-btn::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -120%;
+      width: 60%; height: 100%;
+      background: rgba(255,255,255,0.25);
+      transform: skewX(-25deg);
+      animation: buttonSweep 2.8s infinite;
+    }
+
+    @keyframes buttonSweep {
+      0%   { left: -120%; }
+      50%  { left: 120%; }
+      100% { left: 120%; }
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 45px rgba(255,0,0,1),
+        0 0 95px rgba(255,0,0,0.75);
+    }
+
+    .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .status {
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.05rem;
+      min-height: 26px;
+      color: #ff0000;
+      text-shadow:
+        0 0 12px rgba(255,0,0,0.85),
+        0 0 35px rgba(255,0,0,0.65);
+      animation: statusPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% {
+        text-shadow:
+          0 0 10px rgba(255,0,0,0.65),
+          0 0 25px rgba(255,0,0,0.45);
+      }
+      50% {
+        text-shadow:
+          0 0 20px rgba(255,0,0,1),
+          0 0 60px rgba(255,0,0,0.95);
+      }
+    }
+
+    .mobile-wrapper {
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -38,164 +161,133 @@
       max-width: 560px;
       padding: 42px;
       border-radius: 22px;
-
-      background: rgba(0, 0, 0, 0.82);
-
-      border: 2px solid rgba(0, 120, 255, 0.45);
-
+      background: rgba(0,0,0,0.82);
+      border: 2px solid rgba(0,120,180,0.25);
       box-shadow:
-        0 0 30px rgba(0, 140, 255, 0.75),
-        0 0 85px rgba(0, 140, 255, 0.45),
-        0 0 20px rgba(255, 0, 0, 0.2);
-
+        0 0 30px rgba(255,0,0,0.75),
+        0 0 85px rgba(255,0,0,0.45),
+        0 0 20px rgba(0,120,180,0.15);
       backdrop-filter: blur(14px);
       position: relative;
       z-index: 2;
       animation: fadeIn 0.8s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(25px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    .form-box h1     { text-align: center; font-size: 2.7rem; }
+    .form-box .subtitle { text-align: center; margin-top: 12px; margin-bottom: 32px; }
+    .form-box .status   { margin-top: 20px; }
 
-    h1 {
-      text-align: center;
-      font-size: 2.7rem;
-      font-weight: 900;
-      color: #0099ff;
-      text-shadow:
-        0 0 15px rgba(0, 153, 255, 1),
-        0 0 45px rgba(0, 153, 255, 0.7),
-        0 0 90px rgba(0, 153, 255, 0.55);
-    }
+    .desktop-layout { display: none; }
 
-    p {
-      text-align: center;
-      margin-top: 12px;
-      margin-bottom: 32px;
-      color: #ff8080;
-      font-size: 1.05rem;
-    }
 
-    label {
-      display: block;
-      margin-top: 18px;
-      font-weight: 750;
-      color: rgba(60, 160, 255, 0.95);
-      text-shadow: 0 0 10px rgba(0, 140, 255, 0.45);
-    }
+    @media (min-width: 768px) {
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      margin-top: 7px;
-      padding: 13px;
-      border-radius: 12px;
-      border: 2px solid rgba(0, 140, 255, 0.55);
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      font-size: 1rem;
-      outline: none;
-      box-shadow: 0 0 10px rgba(0, 140, 255, 0.25);
-      transition: 0.25s;
-    }
+      .mobile-wrapper  { display: none; }
 
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #0099ff;
-      box-shadow: 0 0 20px rgba(0, 153, 255, 0.9);
-    }
-
-    textarea {
-      resize: none;
-      height: 95px;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 34px;
-      padding: 16px;
-      border-radius: 14px;
-      border: none;
-      font-size: 1.15rem;
-      font-weight: 900;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-
-      background: linear-gradient(
-        90deg,
-        #0066ff,
-        #000814,
-        #0066ff
-      );
-
-      color: white;
-
-      box-shadow:
-        0 0 30px rgba(0, 140, 255, 0.85),
-        0 0 70px rgba(0, 140, 255, 0.55);
-
-      transition: transform 0.25s ease;
-    }
-
-    button::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 60%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.25);
-      transform: skewX(-25deg);
-      animation: buttonSweep 2.8s infinite;
-    }
-
-    @keyframes buttonSweep {
-      0%   { left: -120%; }
-      50%  { left: 120%; }
-      100% { left: 120%; }
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        0 0 45px rgba(0, 153, 255, 1),
-        0 0 95px rgba(0, 153, 255, 0.75);
-    }
-
-    button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-  
-    .status {
-      text-align: center;
-      margin-top: 20px;
-      font-weight: 900;
-      font-size: 1.05rem;
-      min-height: 26px;
-      color: #0099ff;
-      text-shadow:
-        0 0 12px rgba(0, 153, 255, 0.85),
-        0 0 35px rgba(0, 153, 255, 0.65);
-      animation: statusPulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes statusPulse {
-      0%, 100% {
-        text-shadow:
-          0 0 10px rgba(0, 153, 255, 0.65),
-          0 0 25px rgba(0, 153, 255, 0.45);
+      .desktop-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 60px 80px 80px 80px;
+        position: relative;
+        z-index: 2;
+        animation: fadeIn 0.9s ease;
       }
-      50% {
+
+      .desktop-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .desktop-header h1 {
+        font-size: 3.5rem;
+        letter-spacing: 2px;
         text-shadow:
-          0 0 20px rgba(0, 153, 255, 1),
-          0 0 60px rgba(0, 153, 255, 0.95);
+          0 0 20px rgba(255,0,0,1),
+          0 0 60px rgba(255,0,0,0.8),
+          0 0 120px rgba(255,0,0,0.6),
+          0 0 200px rgba(255,0,0,0.3);
+      }
+
+      .desktop-header .subtitle {
+        margin-top: 10px;
+        font-size: 1.1rem;
+      }
+
+      .desktop-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 60px;
+        flex: 1;
+      }
+
+      .field.full { grid-column: 1 / -1; }
+
+      .field {
+        
+        background: rgba(0,0,0,0.3);
+        border-radius: 14px;
+        padding: 14px 18px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid rgba(255,0,0,0.2);
+        transition: background 0.25s, border-color 0.25s;
+      }
+
+      .field:focus-within {
+        background: rgba(12,0,0,0.5);
+        border-bottom-color: rgba(255,0,0,0.7);
+        box-shadow: 0 4px 30px rgba(255,0,0,0.12);
+      }
+
+      .desktop-layout input,
+      .desktop-layout select,
+      .desktop-layout textarea {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 8px 0;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(255,0,0,0.35);
+        border-radius: 0;
+        margin-top: 4px;
+      }
+
+      .desktop-layout input:focus,
+      .desktop-layout select:focus,
+      .desktop-layout textarea:focus {
+        border-bottom-color: #ff0000;
+        box-shadow: 0 2px 12px rgba(255,0,0,0.4),
+                    0 2px 4px rgba(0,180,255,0.15);
+      }
+
+      .desktop-layout textarea { height: 80px; }
+
+      .desktop-layout label {
+        font-size: 0.78rem;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        margin-top: 0;
+        color: rgba(255,80,80,0.85);
+      }
+
+      .desktop-submit-row {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-top: 24px;
+      }
+
+      .desktop-submit-row .submit-btn {
+        width: auto;
+        min-width: 260px;
+        padding: 18px 48px;
+        font-size: 1.2rem;
+      }
+
+      .desktop-submit-row .status {
+        text-align: left;
+        margin-top: 0;
       }
     }
   </style>
@@ -205,34 +297,29 @@
 
 <canvas id="bg"></canvas>
 
-<div class="wrapper">
+<div class="mobile-wrapper">
   <div class="form-box">
-
     <h1>Apply to Join</h1>
-    <p>Our Application Form</p>
+    <p class="subtitle">Our Application Form</p>
 
-    <form id="applyForm">
-
+    <form id="mobileForm">
       <label>Full Name</label>
-      <input id="full_name" required />
+      <input id="m_full_name" required />
 
       <label>Grade</label>
-      <select id="grade" required>
+      <select id="m_grade" required>
         <option value="">Select</option>
-        <option>9</option>
-        <option>10</option>
-        <option>11</option>
-        <option>12</option>
+        <option>9</option><option>10</option><option>11</option><option>12</option>
       </select>
 
       <label>Email</label>
-      <input id="email" type="email" required />
+      <input id="m_email" type="email" required />
 
       <label>Cybersecurity Experience</label>
-      <textarea id="experience"></textarea>
+      <textarea id="m_experience"></textarea>
 
       <label>Would you like to help manage club activities?</label>
-      <select id="help_manage">
+      <select id="m_help_manage">
         <option value="">Select</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
@@ -240,67 +327,139 @@
       </select>
 
       <label>Best Meeting Day Fit</label>
-      <select id="meeting_day">
+      <select id="m_meeting_day">
         <option value="">Select</option>
-        <option>Monday</option>
-        <option>Tuesday</option>
-        <option>Wednesday</option>
-        <option>Thursday</option>
-        <option>Friday</option>
+        <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+        <option>Thursday</option><option>Friday</option>
       </select>
 
       <label>Why do you want to join?</label>
-      <textarea id="why_join"></textarea>
+      <textarea id="m_why_join"></textarea>
 
-      <button id="submitBtn" type="submit">
+      <button class="submit-btn" id="mobileSubmitBtn" type="submit">
         Submit Application
       </button>
-
-      <div class="status" id="status"></div>
-
+      <div class="status" id="mobileStatus"></div>
     </form>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<div class="desktop-layout">
+  <div class="desktop-header">
+    <h1>Apply to Join</h1>
+    <p class="subtitle">Eaglecrest High School Cybersecurity Club — Application Form</p>
+  </div>
+
+  <form id="desktopForm">
+    <div class="desktop-grid">
+
+      <div class="field">
+        <label>Full Name</label>
+        <input id="d_full_name" required />
+      </div>
+
+      <div class="field">
+        <label>Email</label>
+        <input id="d_email" type="email" required />
+      </div>
+
+      <div class="field">
+        <label>Grade</label>
+        <select id="d_grade" required>
+          <option value="">Select</option>
+          <option>9</option><option>10</option><option>11</option><option>12</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Best Meeting Day Fit</label>
+        <select id="d_meeting_day">
+          <option value="">Select</option>
+          <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+          <option>Thursday</option><option>Friday</option>
+        </select>
+      </div>
+
+      <div class="field full">
+        <label>Cybersecurity Experience</label>
+        <textarea id="d_experience"></textarea>
+      </div>
+
+      <div class="field full">
+        <label>Why do you want to join?</label>
+        <textarea id="d_why_join"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Would you like to help manage club activities?</label>
+        <select id="d_help_manage">
+          <option value="">Select</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="prefer_not">Prefer not to answer</option>
+        </select>
+      </div>
+
+      <!-- Spacer to keep grid even -->
+      <div></div>
+
+      <div class="desktop-submit-row">
+        <button class="submit-btn" id="desktopSubmitBtn" type="submit">
+          Submit Application
+        </button>
+        <div class="status" id="desktopStatus"></div>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL = "https://xgvqmtumbtfvfuxodbhz.supabase.co";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhndnFtdHVtYnRmdmZ1eG9kYmh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1NTMxNTgsImV4cCI6MjA4NTEyOTE1OH0.qxiyoFRVmtD-P4T92u0hvaIR-tqhOj6PmsUzhOAcPuE";
+  const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  async function handleSubmit(fields, btn, statusEl, formEl) {
+    statusEl.textContent = "Submitting...";
+    btn.disabled = true;
+    const { error } = await db.from("applications1").insert([fields]);
+    statusEl.textContent = error ? "Error: " + error.message : "Submitted! Check out our Discord!";
+    if (!error) formEl.reset();
+    btn.disabled = false;
+  }
 
-  const form = document.getElementById("applyForm");
-  const statusText = document.getElementById("status");
-  const submitBtn = document.getElementById("submitBtn");
-
-  form.addEventListener("submit", async (e) => {
+  document.getElementById("mobileForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    statusText.textContent = "Hold....";
-    submitBtn.disabled = true;
+    await handleSubmit({
+      full_name:   document.getElementById("m_full_name").value.trim(),
+      grade:       document.getElementById("m_grade").value,
+      email:       document.getElementById("m_email").value.trim(),
+      experience:  document.getElementById("m_experience").value.trim(),
+      help_manage: document.getElementById("m_help_manage").value,
+      meeting_day: document.getElementById("m_meeting_day").value,
+      why_join:    document.getElementById("m_why_join").value.trim()
+    }, document.getElementById("mobileSubmitBtn"),
+       document.getElementById("mobileStatus"),
+       document.getElementById("mobileForm"));
+  });
 
-    const data = {
-      full_name: document.getElementById("full_name").value.trim(),
-      grade: document.getElementById("grade").value,
-      email: document.getElementById("email").value.trim(),
-      experience: document.getElementById("experience").value.trim(),
-      help_manage: document.getElementById("help_manage").value,
-      meeting_day: document.getElementById("meeting_day").value,
-      why_join: document.getElementById("why_join").value.trim()
-    };
-
-    const { error } = await supabaseClient
-      .from("applications1")
-      .insert([data]);
-
-    if (error) {
-      statusText.textContent = "Error: " + error.message;
-    } else {
-      statusText.textContent = "Submitted! Check out our Discord!";
-      form.reset();
-    }
-
-    submitBtn.disabled = false;
+  document.getElementById("desktopForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    await handleSubmit({
+      full_name:   document.getElementById("d_full_name").value.trim(),
+      grade:       document.getElementById("d_grade").value,
+      email:       document.getElementById("d_email").value.trim(),
+      experience:  document.getElementById("d_experience").value.trim(),
+      help_manage: document.getElementById("d_help_manage").value,
+      meeting_day: document.getElementById("d_meeting_day").value,
+      why_join:    document.getElementById("d_why_join").value.trim()
+    }, document.getElementById("desktopSubmitBtn"),
+       document.getElementById("desktopStatus"),
+       document.getElementById("desktopForm"));
   });
 </script>
 
@@ -309,10 +468,7 @@
   const canvas = document.getElementById("bg");
   const ctx = canvas.getContext("2d");
 
-  function resize() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-  }
+  function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
   addEventListener("resize", resize);
   resize();
 
@@ -340,8 +496,7 @@
       if (n.x < 0 || n.x > canvas.width)  n.vx *= -1;
       if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-      const redDot = Math.random() < 0.15;
-      ctx.fillStyle = redDot ? "#ff0000" : "#00ccff";
+      ctx.fillStyle = Math.random() < 0.15 ? "#ff0000" : "#00ccff";
       ctx.beginPath();
       ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
       ctx.fill();
@@ -350,8 +505,7 @@
         const m = nodes[j];
         const d = Math.hypot(n.x - m.x, n.y - m.y);
         if (d < MAX_DIST) {
-          const redLine = Math.random() < 0.15;
-          ctx.strokeStyle = redLine
+          ctx.strokeStyle = Math.random() < 0.15
             ? `rgba(255,0,0,${1 - d / MAX_DIST})`
             : `rgba(0,200,255,${1 - d / MAX_DIST})`;
           ctx.beginPath();
@@ -361,10 +515,8 @@
         }
       }
     }
-
     requestAnimationFrame(animate);
   }
-
   animate();
 </script>
 
