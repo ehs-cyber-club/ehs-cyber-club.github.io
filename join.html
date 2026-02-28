@@ -41,12 +41,12 @@
 
       background: rgba(0, 0, 0, 0.82);
 
-      border: 2px solid rgba(0, 120, 180, 0.25);
+      border: 2px solid rgba(0, 120, 255, 0.45);
 
       box-shadow:
-        0 0 30px rgba(255, 0, 0, 0.75),
-        0 0 85px rgba(255, 0, 0, 0.45),
-        0 0 20px rgba(0, 120, 180, 0.15);
+        0 0 30px rgba(0, 140, 255, 0.75),
+        0 0 85px rgba(0, 140, 255, 0.45),
+        0 0 20px rgba(255, 0, 0, 0.2);
 
       backdrop-filter: blur(14px);
       position: relative;
@@ -55,33 +55,26 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
       text-align: center;
       font-size: 2.7rem;
       font-weight: 900;
-      color: #ff0000;
-
+      color: #0099ff;
       text-shadow:
-        0 0 15px rgba(255, 0, 0, 1),
-        0 0 45px rgba(255, 0, 0, 0.7),
-        0 0 90px rgba(255, 0, 0, 0.55);
+        0 0 15px rgba(0, 153, 255, 1),
+        0 0 45px rgba(0, 153, 255, 0.7),
+        0 0 90px rgba(0, 153, 255, 0.55);
     }
 
     p {
       text-align: center;
       margin-top: 12px;
       margin-bottom: 32px;
-      color: #b8dfff;
+      color: #ff8080;
       font-size: 1.05rem;
     }
 
@@ -89,8 +82,8 @@
       display: block;
       margin-top: 18px;
       font-weight: 750;
-      color: rgba(255, 60, 60, 0.95);
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.35);
+      color: rgba(60, 160, 255, 0.95);
+      text-shadow: 0 0 10px rgba(0, 140, 255, 0.45);
     }
 
     input,
@@ -100,24 +93,20 @@
       margin-top: 7px;
       padding: 13px;
       border-radius: 12px;
-
-      border: 2px solid rgba(255, 0, 0, 0.55);
+      border: 2px solid rgba(0, 140, 255, 0.55);
       background: rgba(0, 0, 0, 0.7);
-
       color: white;
       font-size: 1rem;
       outline: none;
-
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.25);
+      box-shadow: 0 0 10px rgba(0, 140, 255, 0.25);
       transition: 0.25s;
     }
 
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: #ff0000;
-      box-shadow:
-        0 0 20px rgba(255, 0, 0, 0.9);
+      border-color: #0099ff;
+      box-shadow: 0 0 20px rgba(0, 153, 255, 0.9);
     }
 
     textarea {
@@ -131,7 +120,6 @@
       padding: 16px;
       border-radius: 14px;
       border: none;
-
       font-size: 1.15rem;
       font-weight: 900;
       cursor: pointer;
@@ -140,16 +128,16 @@
 
       background: linear-gradient(
         90deg,
-        #ff0000,
-        #140000,
-        #ff0000
+        #0066ff,
+        #000814,
+        #0066ff
       );
 
       color: white;
 
       box-shadow:
-        0 0 30px rgba(255, 0, 0, 0.85),
-        0 0 70px rgba(255, 0, 0, 0.55);
+        0 0 30px rgba(0, 140, 255, 0.85),
+        0 0 70px rgba(0, 140, 255, 0.55);
 
       transition: transform 0.25s ease;
     }
@@ -161,24 +149,22 @@
       left: -120%;
       width: 60%;
       height: 100%;
-
       background: rgba(255, 255, 255, 0.25);
       transform: skewX(-25deg);
-
       animation: buttonSweep 2.8s infinite;
     }
 
     @keyframes buttonSweep {
-      0% { left: -120%; }
-      50% { left: 120%; }
+      0%   { left: -120%; }
+      50%  { left: 120%; }
       100% { left: 120%; }
     }
 
     button:hover {
       transform: translateY(-3px);
       box-shadow:
-        0 0 45px rgba(255, 0, 0, 1),
-        0 0 95px rgba(255, 0, 0, 0.75);
+        0 0 45px rgba(0, 153, 255, 1),
+        0 0 95px rgba(0, 153, 255, 0.75);
     }
 
     button:disabled {
@@ -186,32 +172,30 @@
       cursor: not-allowed;
     }
 
+  
     .status {
       text-align: center;
       margin-top: 20px;
       font-weight: 900;
       font-size: 1.05rem;
       min-height: 26px;
-
-      color: #ff0000;
-
+      color: #0099ff;
       text-shadow:
-        0 0 12px rgba(255, 0, 0, 0.85),
-        0 0 35px rgba(255, 0, 0, 0.65);
-
+        0 0 12px rgba(0, 153, 255, 0.85),
+        0 0 35px rgba(0, 153, 255, 0.65);
       animation: statusPulse 1.8s ease-in-out infinite;
     }
 
     @keyframes statusPulse {
       0%, 100% {
         text-shadow:
-          0 0 10px rgba(255, 0, 0, 0.65),
-          0 0 25px rgba(255, 0, 0, 0.45);
+          0 0 10px rgba(0, 153, 255, 0.65),
+          0 0 25px rgba(0, 153, 255, 0.45);
       }
       50% {
         text-shadow:
-          0 0 20px rgba(255, 0, 0, 1),
-          0 0 60px rgba(255, 0, 0, 0.95);
+          0 0 20px rgba(0, 153, 255, 1),
+          0 0 60px rgba(0, 153, 255, 0.95);
       }
     }
   </style>
@@ -281,13 +265,10 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
- const SUPABASE_URL = "https://xgvqmtumbtfvfuxodbhz.supabase.co";
+  const SUPABASE_URL = "https://xgvqmtumbtfvfuxodbhz.supabase.co";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhndnFtdHVtYnRmdmZ1eG9kYmh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk1NTMxNTgsImV4cCI6MjA4NTEyOTE1OH0.qxiyoFRVmtD-P4T92u0hvaIR-tqhOj6PmsUzhOAcPuE";
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
   const form = document.getElementById("applyForm");
   const statusText = document.getElementById("status");
@@ -295,8 +276,7 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    statusText.textContent = "Submitting...";
+    statusText.textContent = "Hold....";
     submitBtn.disabled = true;
 
     const data = {
@@ -316,13 +296,14 @@
     if (error) {
       statusText.textContent = "Error: " + error.message;
     } else {
-      statusText.textContent = "Submitted, Check out our discord! ";
+      statusText.textContent = "Submitted! Check out our Discord!";
       form.reset();
     }
 
     submitBtn.disabled = false;
   });
 </script>
+
 
 <script>
   const canvas = document.getElementById("bg");
@@ -335,32 +316,32 @@
   addEventListener("resize", resize);
   resize();
 
-  const nodes = [];
-  const NODE_COUNT = 120;
-  const MAX_DIST = 170;
+  const isMobile = window.innerWidth < 700;
+  const NODE_COUNT = isMobile ? 70 : 150;
+  const MAX_DIST   = isMobile ? 140 : 230;
 
+  const nodes = [];
   for (let i = 0; i < NODE_COUNT; i++) {
     nodes.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.55,
-      vy: (Math.random() - 0.5) * 0.55
+      x:  Math.random() * canvas.width,
+      y:  Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * (isMobile ? 0.35 : 0.55),
+      vy: (Math.random() - 0.5) * (isMobile ? 0.35 : 0.55)
     });
   }
 
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(0,0,0,.35)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
-
-      n.x += n.vx;
-      n.y += n.vy;
-
-      if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > canvas.width)  n.vx *= -1;
       if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-      ctx.fillStyle = "#ff0000";
+      const redDot = Math.random() < 0.15;
+      ctx.fillStyle = redDot ? "#ff0000" : "#00ccff";
       ctx.beginPath();
       ctx.arc(n.x, n.y, 2, 0, Math.PI * 2);
       ctx.fill();
@@ -368,11 +349,11 @@
       for (let j = i + 1; j < nodes.length; j++) {
         const m = nodes[j];
         const d = Math.hypot(n.x - m.x, n.y - m.y);
-
         if (d < MAX_DIST) {
-          ctx.strokeStyle =
-            `rgba(0,120,180,${0.25 * (1 - d / MAX_DIST)})`;
-
+          const redLine = Math.random() < 0.15;
+          ctx.strokeStyle = redLine
+            ? `rgba(255,0,0,${1 - d / MAX_DIST})`
+            : `rgba(0,200,255,${1 - d / MAX_DIST})`;
           ctx.beginPath();
           ctx.moveTo(n.x, n.y);
           ctx.lineTo(m.x, m.y);
