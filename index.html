@@ -48,6 +48,179 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
 @media (prefers-reduced-motion:no-preference){.panel,.card,.motion-tile,.signal-metric{will-change:transform,opacity,filter}.hero-logo::after{animation-duration:4.2s}.btn{will-change:transform}.signal-metric:hover,.trust-item:hover,.panel:hover{transform:translateY(-4px);border-color:rgba(121,222,255,.24)}}
 @media (max-width:760px){.approval-box{position:relative;top:auto;left:auto;width:fit-content;max-width:calc(100% - 32px);margin:84px auto -72px;font-size:10px}.title .official-main,.title .official{letter-spacing:-.075em}.stars span{font-size:clamp(1.75rem,8vw,2.55rem)}}
 
+
+.added-section{isolation:isolate}.glance-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}.glance-card{min-height:190px;padding:24px;position:relative;overflow:hidden}.glance-card::before,.sponsor-card::before,.activity-card::before,.cred-item::before,.benefit-card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(135deg,rgba(121,222,255,.18),rgba(255,38,63,.14),transparent 62%);opacity:.62;z-index:-1;transition:opacity .4s ease,transform .4s cubic-bezier(.19,1,.22,1)}.glance-card:hover::before,.sponsor-card:hover::before,.activity-card:hover::before,.cred-item:hover::before,.benefit-card:hover::before{opacity:1;transform:scale(1.015)}.stat-value{display:block;font-size:clamp(2.15rem,4.6vw,4.8rem);line-height:.86;letter-spacing:-.07em;font-weight:950;background:linear-gradient(120deg,#fff,#79deff,#143dff,#ff263f,#0b0e16);background-size:260% 260%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 28px rgba(121,222,255,.1);animation:shineText 9s ease-in-out infinite}.stat-label{display:block;margin-top:14px;color:var(--text);font-size:.9rem;text-transform:uppercase;letter-spacing:.13em;font-weight:900}.stat-copy{margin:12px 0 0;color:var(--muted);font-size:.94rem;line-height:1.55}.sponsor-card{position:relative;display:grid;grid-template-columns:minmax(0,.85fr) minmax(260px,.52fr);gap:28px;align-items:center;padding:34px;overflow:hidden}.sponsor-name{font-size:clamp(2.7rem,6.2vw,7rem);line-height:.86;letter-spacing:-.07em;margin:0 0 18px;font-weight:950;background:linear-gradient(125deg,#fff,#79deff,#ff263f,#121722);background-size:240% 240%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shineText 10s ease-in-out infinite}.sponsor-badges{display:grid;gap:12px}.sponsor-badge,.cred-item,.benefit-card{position:relative;border:1px solid rgba(255,255,255,.12);background:linear-gradient(145deg,rgba(18,27,43,.84),rgba(7,10,16,.88));border-radius:24px;padding:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}.sponsor-badge{font-size:.82rem;color:var(--soft);font-weight:900;text-transform:uppercase;letter-spacing:.12em}.activity-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}.activity-card{position:relative;min-height:265px;padding:24px;overflow:hidden}.activity-card h3,.benefit-card h3{margin:0 0 16px;font-size:1.18rem;letter-spacing:-.02em}.activity-card ul,.benefit-card ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted);font-size:.95rem;line-height:1.45}.activity-card li,.benefit-card li{position:relative;padding-left:18px}.activity-card li::before,.benefit-card li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:999px;background:linear-gradient(135deg,var(--blue2),var(--red));box-shadow:0 0 14px rgba(121,222,255,.35)}.benefit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.benefit-card{min-height:150px;transition:transform .36s cubic-bezier(.19,1,.22,1),border-color .36s ease}.benefit-card:hover{transform:translateY(-8px);border-color:rgba(121,222,255,.24)}.cred-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}.cred-item{min-height:112px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--soft);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;transition:transform .36s cubic-bezier(.19,1,.22,1),border-color .36s ease}.cred-item:hover{transform:translateY(-7px);border-color:rgba(255,38,63,.25)}.added-kicker{max-width:760px}@media (max-width:1120px){.glance-grid,.activity-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cred-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sponsor-card{grid-template-columns:1fr}}@media (max-width:640px){.glance-grid,.activity-grid,.benefit-grid,.cred-grid{grid-template-columns:1fr}.sponsor-card{padding:24px}.glance-card,.activity-card{min-height:auto}}
+
+
+.hero-grid{grid-template-columns:minmax(0,1.16fr) minmax(300px,.84fr);gap:56px;align-items:center}
+.hero-grid>div:first-child{position:relative;z-index:8;isolation:isolate}.title{position:relative;z-index:9;max-width:860px}.title .official-main{font-size:clamp(3.15rem,6.85vw,7.9rem);line-height:.9;letter-spacing:-.072em;background:linear-gradient(105deg,#05070d 0%,#0a0e17 13%,#ff263f 30%,#fff 44%,#2a8cff 60%,#79deff 74%,#070a10 100%)!important;background-size:300% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;filter:drop-shadow(0 0 28px rgba(42,140,255,.36)) drop-shadow(0 0 26px rgba(255,38,63,.28)) drop-shadow(0 26px 70px rgba(0,0,0,.78))!important;animation:shineText 13.5s cubic-bezier(.45,0,.2,1) infinite!important}
+.signal-card{z-index:1;justify-self:end;max-width:500px;box-shadow:0 26px 82px rgba(0,0,0,.5),0 0 24px rgba(42,140,255,.08),inset 0 1px 0 rgba(255,255,255,.12)!important}.signal-card::before{opacity:.26!important}.signal-label{color:rgba(214,225,244,.72)}.hero-logo-wrap{box-shadow:0 0 42px rgba(121,222,255,.17),0 0 34px rgba(255,38,63,.1)}
+.stars span{color:#ff1033!important;text-shadow:0 0 22px rgba(255,16,51,1),0 0 60px rgba(255,38,63,1),0 0 118px rgba(255,38,63,.68),0 0 168px rgba(255,112,132,.42)!important;animation:starLift 1.7s cubic-bezier(.19,1,.22,1) both,starGlow 1.95s ease-in-out infinite!important}.signal-stars span{font-size:clamp(1.28rem,2.4vw,2rem)!important;text-shadow:0 0 18px rgba(255,16,51,1),0 0 48px rgba(255,38,63,1),0 0 86px rgba(255,38,63,.58)!important}
+.approval-box{z-index:10;background:linear-gradient(135deg,rgba(2,3,7,.96),rgba(80,5,16,.72),rgba(2,3,7,.96))!important;border-color:rgba(255,38,63,.58)!important;color:#fff!important;text-shadow:0 0 14px rgba(255,38,63,.8);box-shadow:0 0 34px rgba(255,38,63,.5),0 0 86px rgba(0,0,0,.88),inset 0 1px 0 rgba(255,255,255,.18)!important}
+.sponsor-name{background:linear-gradient(115deg,#05060a 0%,#120208 18%,#ff1235 38%,#ff6b78 52%,#0a0d15 74%,#ff263f 100%)!important;background-size:280% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;filter:drop-shadow(0 0 26px rgba(255,38,63,.42)) drop-shadow(0 20px 56px rgba(0,0,0,.75));animation:shineText 12.5s cubic-bezier(.45,0,.2,1) infinite!important}
+.added-kicker,.advanced-copy,.card p,.activity-card li,.benefit-card li,.stat-copy,.cred-item{letter-spacing:.005em}.room-pill,.time-pill{border-color:rgba(121,222,255,.34)!important;background:linear-gradient(135deg,rgba(42,140,255,.13),rgba(255,255,255,.055))!important;box-shadow:0 0 26px rgba(42,140,255,.12),inset 0 1px 0 rgba(255,255,255,.1)!important}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr;gap:34px}.signal-card{justify-self:stretch;max-width:none}.title .official-main{font-size:clamp(3rem,12vw,5.7rem)}}
+
+.title .official-main{
+  display:inline-block!important;
+  background:linear-gradient(105deg,#020308 0%,#070a10 10%,#ff263f 28%,#ff6b7e 39%,#ffffff 48%,#2a8cff 61%,#79deff 72%,#070a10 86%,#020308 100%)!important;
+  background-size:360% 100%!important;
+  background-position:0% 50%;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  filter:drop-shadow(0 0 34px rgba(42,140,255,.46)) drop-shadow(0 0 30px rgba(255,38,63,.42)) drop-shadow(0 28px 74px rgba(0,0,0,.82))!important;
+  animation:clubTitleMotion 4.8s linear infinite!important;
+}
+.sponsor-name{
+  display:inline-block!important;
+  background:linear-gradient(105deg,#020308 0%,#0b0d13 16%,#ff1838 34%,#ff6b7e 45%,#ffffff 52%,#ff263f 63%,#090b10 80%,#020308 100%)!important;
+  background-size:460% 100%!important;
+  background-position:100% 50%;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  text-shadow:none!important;
+  filter:drop-shadow(0 0 30px rgba(255,38,63,.62)) drop-shadow(0 0 18px rgba(255,255,255,.18)) drop-shadow(0 20px 58px rgba(0,0,0,.86))!important;
+  animation:sponsorRedBlackMotion 4.8s linear infinite!important;
+}
+@keyframes clubTitleMotion{
+  0%{background-position:0% 50%;filter:drop-shadow(0 0 34px rgba(42,140,255,.46)) drop-shadow(0 0 30px rgba(255,38,63,.42)) drop-shadow(0 28px 74px rgba(0,0,0,.82))}
+  50%{background-position:100% 50%;filter:drop-shadow(0 0 48px rgba(42,140,255,.66)) drop-shadow(0 0 42px rgba(255,38,63,.58)) drop-shadow(0 28px 74px rgba(0,0,0,.86))}
+  100%{background-position:0% 50%;filter:drop-shadow(0 0 34px rgba(42,140,255,.46)) drop-shadow(0 0 30px rgba(255,38,63,.42)) drop-shadow(0 28px 74px rgba(0,0,0,.82))}
+}
+@keyframes sponsorRedBlackMotion{
+  0%{background-position:100% 50%;filter:drop-shadow(0 0 32px rgba(255,38,63,.72)) drop-shadow(0 0 18px rgba(255,255,255,.20)) drop-shadow(0 20px 58px rgba(0,0,0,.88))}
+  50%{background-position:0% 50%;filter:drop-shadow(0 0 56px rgba(255,38,63,.95)) drop-shadow(0 0 30px rgba(255,255,255,.30)) drop-shadow(0 20px 58px rgba(0,0,0,.92))}
+  100%{background-position:100% 50%;filter:drop-shadow(0 0 32px rgba(255,38,63,.72)) drop-shadow(0 0 18px rgba(255,255,255,.20)) drop-shadow(0 20px 58px rgba(0,0,0,.88))}
+}
+
+
+.title .official-main{
+  position:relative!important;
+  display:inline-block!important;
+  background:none!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  text-shadow:none!important;
+  overflow:visible!important;
+}
+.title .official-main::before{
+  content:"Cybersecurity Club & AI";
+  position:absolute;
+  inset:0;
+  display:block;
+  font:inherit;
+  line-height:inherit;
+  letter-spacing:inherit;
+  white-space:inherit;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  background-image:linear-gradient(90deg,#020308 0%,#070a10 8%,#ff1235 15%,#ff6074 22%,#ffffff 29%,#2a8cff 36%,#79deff 43%,#0a0e17 50%,#ff263f 57%,#0b0f18 64%,#1d73ff 72%,#f8fbff 80%,#ff1235 88%,#020308 100%);
+  background-size:520% 100%;
+  background-position:100% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  filter:drop-shadow(0 0 42px rgba(42,140,255,.62)) drop-shadow(0 0 38px rgba(255,38,63,.58)) drop-shadow(0 28px 76px rgba(0,0,0,.9));
+  animation:cyberTitleTrueFlow 3.9s linear infinite!important;
+  pointer-events:none;
+  z-index:2;
+}
+.title .official-main::after{
+  content:"Cybersecurity Club & AI";
+  position:absolute;
+  inset:0;
+  display:block;
+  font:inherit;
+  line-height:inherit;
+  letter-spacing:inherit;
+  white-space:inherit;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  background-image:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.95) 46%,rgba(121,222,255,.9) 50%,transparent 58%);
+  background-size:260% 100%;
+  background-position:150% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  opacity:.68;
+  animation:cyberTitleHighlightSweep 4.6s linear infinite!important;
+  pointer-events:none;
+  z-index:3;
+}
+.sponsor-name{
+  position:relative!important;
+  display:inline-block!important;
+  background:none!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  text-shadow:none!important;
+  overflow:visible!important;
+}
+.sponsor-name::before{
+  content:"Mr. Seely";
+  position:absolute;
+  inset:0;
+  display:block;
+  font:inherit;
+  line-height:inherit;
+  letter-spacing:inherit;
+  white-space:inherit;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  background-image:linear-gradient(90deg,#030306 0%,#090105 9%,#ff0e31 18%,#ff4c62 27%,#ffffff 36%,#ff193a 45%,#0b0206 54%,#ff2f4c 63%,#15171f 72%,#ff0e31 82%,#030306 100%);
+  background-size:520% 100%;
+  background-position:100% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  filter:drop-shadow(0 0 46px rgba(255,38,63,.95)) drop-shadow(0 0 24px rgba(255,255,255,.26)) drop-shadow(0 20px 58px rgba(0,0,0,.92));
+  animation:seelyTrueRightToLeft 3.15s linear infinite!important;
+  pointer-events:none;
+  z-index:2;
+}
+.sponsor-name::after{
+  content:"Mr. Seely";
+  position:absolute;
+  inset:0;
+  display:block;
+  font:inherit;
+  line-height:inherit;
+  letter-spacing:inherit;
+  white-space:inherit;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+  background-image:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.96) 46%,rgba(255,38,63,.98) 52%,transparent 60%);
+  background-size:260% 100%;
+  background-position:150% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  opacity:.72;
+  animation:seelyGlowSweep 3.15s linear infinite!important;
+  pointer-events:none;
+  z-index:3;
+}
+@keyframes cyberTitleTrueFlow{
+  0%{background-position:100% 50%;filter:drop-shadow(0 0 38px rgba(42,140,255,.54)) drop-shadow(0 0 32px rgba(255,38,63,.5)) drop-shadow(0 28px 76px rgba(0,0,0,.9))}
+  50%{background-position:0% 50%;filter:drop-shadow(0 0 56px rgba(42,140,255,.8)) drop-shadow(0 0 48px rgba(255,38,63,.7)) drop-shadow(0 28px 76px rgba(0,0,0,.92))}
+  100%{background-position:-100% 50%;filter:drop-shadow(0 0 38px rgba(42,140,255,.54)) drop-shadow(0 0 32px rgba(255,38,63,.5)) drop-shadow(0 28px 76px rgba(0,0,0,.9))}
+}
+@keyframes cyberTitleHighlightSweep{
+  0%{background-position:170% 50%;opacity:.2}
+  34%{opacity:.78}
+  68%,100%{background-position:-90% 50%;opacity:.2}
+}
+@keyframes seelyTrueRightToLeft{
+  0%{background-position:100% 50%;filter:drop-shadow(0 0 38px rgba(255,38,63,.78)) drop-shadow(0 0 18px rgba(255,255,255,.22)) drop-shadow(0 20px 58px rgba(0,0,0,.92))}
+  50%{background-position:0% 50%;filter:drop-shadow(0 0 62px rgba(255,38,63,1)) drop-shadow(0 0 32px rgba(255,255,255,.34)) drop-shadow(0 20px 58px rgba(0,0,0,.94))}
+  100%{background-position:-100% 50%;filter:drop-shadow(0 0 38px rgba(255,38,63,.78)) drop-shadow(0 0 18px rgba(255,255,255,.22)) drop-shadow(0 20px 58px rgba(0,0,0,.92))}
+}
+@keyframes seelyGlowSweep{
+  0%{background-position:170% 50%;opacity:.22}
+  42%{opacity:.86}
+  74%,100%{background-position:-90% 50%;opacity:.22}
+}
+
 </style>
 </head>
 <body>
@@ -78,8 +251,8 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
       <div class="eyebrow reveal"><span class="pill hot room-pill">Room E203</span><span class="pill time-pill">After school · 3:30–4:30 PM</span><span class="pill">Eaglecrest High School</span><span class="pill">Cyber Raptors</span></div>
       <div class="stars reveal" aria-hidden="true"><span style="--i:1">&#9733;</span><span style="--i:2">&#9733;</span><span style="--i:3">&#9733;</span><span style="--i:4">&#9733;</span><span style="--i:5">&#9733;</span></div>
       <h1 class="title reveal"><span class="official official-main">Cybersecurity Club &amp; AI</span></h1>
-      <p class="lede reveal">A high-intensity student technology organization where Cyber Raptors study modern defensive security, artificial intelligence risk, Linux systems, adversarial thinking, capture-the-flag methodology, and responsible technical execution.</p>
-      <p class="advanced-copy reveal">The club is built for students who want more than surface-level digital safety. Members work through structured labs, tool chains, research briefings, and collaborative projects that connect computing theory with real operational discipline.</p>
+      <p class="lede reveal">A high-intensity student technical organization where Cyber Raptors study defensive security operations, AI threat modeling, Linux system behavior, adversarial methodology, capture-the-flag analysis, and disciplined engineering practice.</p>
+      <p class="advanced-copy reveal">The club is built for students who want more than surface-level digital safety. Members develop production-grade habits through structured labs, terminal workflows, research briefings, threat-model discussions, and collaborative builds that connect computing theory with responsible operational discipline.</p>
       <div class="hero-actions reveal"><a class="btn primary" href="join.html">Apply For Cyber Raptors</a><a class="btn secondary" href="#program">Explore the System</a></div>
     </div>
     <aside class="signal-card reveal-scale" data-parallax="0.04" aria-label="Cyber Raptors club signal">
@@ -105,12 +278,64 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
     <div class="trust-item"><span>After school</span><strong>3:30–4:30 PM</strong></div>
   </div>
 </section>
+
+<section class="section added-section" id="glance">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="label">Operational snapshot</div><h2>Cyber Raptors At A Glance</h2></div><p class="added-kicker">A concise operational view of the club's foundation, meeting structure, competition direction, and technical practice environment without inflated numbers or invented growth claims.</p></div>
+    <div class="glance-grid">
+      <article class="glance-card panel reveal-scale"><span class="stat-value" data-counter="2026">0</span><span class="stat-label">Founded</span><p class="stat-copy">Established as Eaglecrest High School's cybersecurity and artificial intelligence technical organization.</p></article>
+      <article class="glance-card panel reveal-scale"><span class="stat-value" data-prefix="E" data-counter="203">E000</span><span class="stat-label">Meeting Room</span><p class="stat-copy">The current in-person operations room for meetings, labs, and guided technical work.</p></article>
+      <article class="glance-card panel reveal-scale"><span class="stat-value">Weekly</span><span class="stat-label">Meetings</span><p class="stat-copy">A recurring after-school operating window for structured labs, collaboration, and technical progression.</p></article>
+      <article class="glance-card panel reveal-scale"><span class="stat-value">CTF</span><span class="stat-label">TryHackMe Practice</span><p class="stat-copy">Hands-on challenge environments for reconnaissance logic, web concepts, security fundamentals, and analytical problem solving.</p></article>
+      <article class="glance-card panel reveal-scale"><span class="stat-value">Team</span><span class="stat-label">CyberPatriot</span><p class="stat-copy">Defensive competition preparation through system hardening, checklist discipline, role coordination, and practical technical teamwork.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section added-section" id="sponsor">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="label">Faculty sponsor</div><h2>Faculty Sponsor</h2></div><p class="added-kicker">The club is supported by a sponsor with direct experience across secondary computer science instruction, higher-education computing, and structured technical learning environments.</p></div>
+    <article class="sponsor-card panel reveal-scale">
+      <div><h3 class="sponsor-name">Mr. Seely</h3><p class="advanced-copy">Cyber Raptors is proudly sponsored by Mr. Seely, a computer science educator at Eaglecrest High School. Mr. Seely teaches eight computer science classes and also serves as a Computer Science Professor at a local community college. His experience across secondary and higher education strengthens the club's mission of building technical competence, leadership discipline, responsible research habits, and professional technology practices.</p></div>
+      <div class="sponsor-badges"><span class="sponsor-badge">Eaglecrest High School</span><span class="sponsor-badge">Computer Science Educator</span><span class="sponsor-badge">Community College Professor</span><span class="sponsor-badge">Club Sponsor</span></div>
+    </article>
+  </div>
+</section>
+<section class="section added-section" id="actual-work">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="label">Real club activity</div><h2>What We Actually Do</h2></div><p class="added-kicker">Cyber Raptors is built around practical, supervised, school-appropriate technical work: guided lab environments, competition preparation, systems practice, AI security discussion, and cybersecurity fundamentals connected to real operational thinking.</p></div>
+    <div class="activity-grid">
+      <article class="activity-card panel reveal-scale"><h3>TryHackMe CTF Challenges</h3><ul><li>Hands-on security lab execution</li><li>Real-world attack and defense concepts</li><li>Team-based analytical problem solving</li></ul></article>
+      <article class="activity-card panel reveal-scale"><h3>CyberPatriot Competition</h3><ul><li>National defensive cybersecurity competition</li><li>Defensive operations experience</li><li>Practical technical coordination</li></ul></article>
+      <article class="activity-card panel reveal-scale"><h3>Linux &amp; Operating Systems</h3><ul><li>Linux command-line fundamentals</li><li>System administration foundations</li><li>Security-focused terminal workflows</li></ul></article>
+      <article class="activity-card panel reveal-scale"><h3>AI &amp; Emerging Technology</h3><ul><li>AI threat-modeling discussions</li><li>Responsible AI-assisted workflows</li><li>Emerging technology research</li></ul></article>
+      <article class="activity-card panel reveal-scale"><h3>Cybersecurity Fundamentals</h3><ul><li>Network security foundations</li><li>Digital risk awareness</li><li>Authorized ethical hacking concepts</li><li>Security culture and awareness</li></ul></article>
+    </div>
+  </div>
+</section>
+<section class="section added-section" id="why-join">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="label">Member value</div><h2>Why Join Cyber Raptors?</h2></div><p class="added-kicker">The member experience is designed for students who want technical confidence, competition exposure, leadership opportunities, and a serious environment for modern computing, cybersecurity, AI, and systems thinking.</p></div>
+    <div class="benefit-grid">
+      <article class="benefit-card reveal-scale"><h3>Technical Skill</h3><ul><li>Build practical cybersecurity capability</li><li>Gain experience with Linux systems and terminal workflows</li></ul></article>
+      <article class="benefit-card reveal-scale"><h3>Competition Practice</h3><ul><li>Practice with TryHackMe CTF-style challenge environments</li><li>Prepare for CyberPatriot defensive competition</li></ul></article>
+      <article class="benefit-card reveal-scale"><h3>Team Growth</h3><ul><li>Work with motivated technical students</li><li>Develop technical leadership and communication skills</li></ul></article>
+      <article class="benefit-card reveal-scale"><h3>Future Systems</h3><ul><li>Explore AI security and emerging technologies</li><li>Build projects, documentation, and technical experience</li></ul></article>
+    </div>
+  </div>
+</section>
+<section class="section compact added-section" id="credibility">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="label">Trust signals</div><h2>Built for confidence.</h2></div><p class="added-kicker">Clear signals for students, teachers, administrators, and parents: the club is student-led, faculty sponsored, structured around weekly technical practice, and focused on responsible capability development.</p></div>
+    <div class="cred-grid reveal-scale"><div class="cred-item">Student-Led Organization</div><div class="cred-item">Eaglecrest High School</div><div class="cred-item">Weekly Meetings</div><div class="cred-item">Cybersecurity + AI</div><div class="cred-item">CyberPatriot Participation</div><div class="cred-item">TryHackMe Practice</div><div class="cred-item">Faculty Sponsored</div></div>
+  </div>
+</section>
+
 <section class="cinema" id="program">
   <div class="container cinema-grid">
     <div class="sticky-copy reveal">
       <div class="label">Program architecture</div>
       <h2>A club built like a technical pipeline.</h2>
-      <p class="advanced-copy">Instead of random lectures, Cybersecurity Club &amp; AI is organized around progressive technical exposure: understand systems, operate safely, build capability, and convert curiosity into disciplined execution.</p>
+      <p class="advanced-copy">Instead of random lectures, Cybersecurity Club &amp; AI is organized around progressive technical exposure: understand systems, operate inside authorized environments, build capability, document decisions, and convert curiosity into disciplined execution.</p>
     </div>
     <div class="cinema-stack">
       <article class="motion-tile panel reveal-scale"><div><div class="label">01</div><h3>Understand the system.</h3></div><p>Members study how networks, web applications, accounts, operating systems, AI tools, and human behavior interact. The goal is not memorizing buzzwords; it is building a mental model of how digital environments actually fail.</p></article>
@@ -136,7 +361,7 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
 <section class="section" id="ai">
   <div class="container hot-panel panel reveal-scale">
     <div class="ai-core">
-      <div><div class="label">Hot topic</div><h2>AI security is now part of the attack surface.</h2></div>
+      <div><div class="label">Hot topic</div><h2>AI security is now part of the modern attack surface.</h2></div>
       <p class="advanced-copy">Cybersecurity Club &amp; AI treats artificial intelligence as a modern computing layer that affects privacy, automation, misinformation, coding, research, and defense. Members learn how to use AI effectively without confusing convenience for expertise.</p>
       <div class="ai-orbit" aria-hidden="true"></div>
     </div>
@@ -156,11 +381,11 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
 </section>
 <section class="section compact" aria-label="Ethics and search identity">
   <div class="container">
-    <div class="section-head reveal"><div><div class="label">Responsible technical culture</div><h2>Advanced does not mean reckless.</h2></div><p>Cybersecurity Club &amp; AI emphasizes authorized labs, defensive thinking, careful documentation, and professional boundaries. The club is serious because it treats technical power with discipline.</p></div>
+    <div class="section-head reveal"><div><div class="label">Responsible technical culture</div><h2>Advanced does not mean uncontrolled.</h2></div><p>Cybersecurity Club &amp; AI emphasizes authorized labs, defensive thinking, careful documentation, and professional boundaries. The club is serious because it treats technical power with discipline.</p></div>
     <div class="faq-grid">
       <div class="faq panel reveal"><h3>What should students search?</h3><p>EHS Cybersecurity Club, Eaglecrest Cybersecurity Club, Eaglecrest High School Cybersecurity Club, Cybersecurity Club &amp; AI, or Cyber Raptors.</p></div>
       <div class="faq panel reveal"><h3>Can beginners join?</h3><p>Yes. Beginners can join if they are willing to learn carefully, ask questions, practice responsibly, and grow through structured technical work.</p></div>
-      <div class="faq panel reveal"><h3>Is this only about online safety?</h3><p>No. Digital safety is one part. The larger mission is systems thinking, cybersecurity fundamentals, AI security awareness, Linux, CTF practice, and technical leadership.</p></div>
+      <div class="faq panel reveal"><h3>Is this only about online safety?</h3><p>No. Digital risk awareness is one part. The larger mission is systems thinking, cybersecurity fundamentals, AI security awareness, Linux, CTF practice, and technical leadership.</p></div>
       <div class="faq panel reveal"><h3>What is Cyber Raptors?</h3><p>Cyber Raptors is the member identity of Cybersecurity Club &amp; AI at Eaglecrest High School.</p></div>
     </div>
   </div>
@@ -236,6 +461,46 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
       root.style.setProperty("--my",((event.clientY/window.innerHeight)-.5).toFixed(3));
     },{passive:true});
   }
+
+  const counters=[...document.querySelectorAll("[data-counter]")];
+  function finishCounter(el){
+    const value=Number(el.dataset.counter||0);
+    const prefix=el.dataset.prefix||"";
+    el.textContent=prefix+String(value);
+  }
+  function animateCounter(el){
+    if(el.dataset.done)return;
+    el.dataset.done="true";
+    const value=Number(el.dataset.counter||0);
+    const prefix=el.dataset.prefix||"";
+    const duration=1400;
+    const start=performance.now();
+    function frame(now){
+      const progress=Math.min(1,(now-start)/duration);
+      const eased=1-Math.pow(1-progress,4);
+      const current=Math.round(value*eased);
+      el.textContent=prefix+String(current);
+      if(progress<1)requestAnimationFrame(frame);
+      else finishCounter(el);
+    }
+    requestAnimationFrame(frame);
+  }
+  if(counters.length){
+    if(reduce){
+      counters.forEach(finishCounter);
+    }else{
+      const counterObserver=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },{threshold:.55});
+      counters.forEach(item=>counterObserver.observe(item));
+    }
+  }
+
 })();
 </script>
 </body>
