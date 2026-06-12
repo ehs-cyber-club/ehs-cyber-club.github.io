@@ -222,6 +222,140 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
 }
 
 </style>
+
+
+<style id="mobile-safe-gradient-patch">
+.title .official-main{
+  position:relative!important;
+  display:inline-block!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(115deg,#03050b 0%,#070a12 9%,#ff1437 18%,#ff536b 27%,#ffffff 36%,#1a66ff 48%,#79deff 58%,#080b13 70%,#ff263f 82%,#f8fbff 91%,#03050b 100%)!important;
+  background-size:480% 100%!important;
+  background-position:100% 50%;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  text-shadow:none!important;
+  filter:drop-shadow(0 0 20px rgba(42,140,255,.24)) drop-shadow(0 0 18px rgba(255,38,63,.18))!important;
+  animation:officialMainSmoothFlow 22s cubic-bezier(.45,0,.2,1) infinite!important;
+  will-change:background-position;
+}
+.title .official-main::before,
+.title .official-main::after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+.sponsor-name{
+  position:relative!important;
+  display:inline-block!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(90deg,#050509 0%,#0b0b11 11%,#ff1235 24%,#ff5068 36%,#ffffff 47%,#ff263f 58%,#11131a 70%,#ff1838 84%,#050509 100%)!important;
+  background-size:440% 100%!important;
+  background-position:130% 50%;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  text-shadow:0 0 22px rgba(255,38,63,.62),0 0 54px rgba(255,38,63,.32),0 20px 54px rgba(0,0,0,.86)!important;
+  filter:none!important;
+  animation:seelySmoothRightToLeft 7.5s linear infinite!important;
+  will-change:background-position;
+}
+.sponsor-name::before,
+.sponsor-name::after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+.hero-grid{
+  position:relative;
+  z-index:2;
+}
+.approval-box{
+  z-index:1!important;
+}
+@keyframes officialMainSmoothFlow{
+  0%{background-position:100% 50%}
+  50%{background-position:0% 50%}
+  100%{background-position:-100% 50%}
+}
+@keyframes seelySmoothRightToLeft{
+  0%{background-position:135% 50%}
+  100%{background-position:-35% 50%}
+}
+@media (max-width:760px){
+  .approval-box{
+    position:relative!important;
+    top:auto!important;
+    left:auto!important;
+    z-index:1!important;
+    margin:0 11px 20px!important;
+    max-width:calc(100% - 22px)!important;
+    transform:none!important;
+  }
+  .title .official-main{
+    animation-duration:26s!important;
+    filter:drop-shadow(0 0 14px rgba(42,140,255,.18)) drop-shadow(0 0 12px rgba(255,38,63,.15))!important;
+  }
+  .sponsor-name{
+    animation-duration:9.5s!important;
+    text-shadow:0 0 18px rgba(255,38,63,.5),0 0 36px rgba(255,38,63,.22)!important;
+  }
+}
+</style>
+
+
+<style id="final-title-gradient-lock">
+.title .official-main{
+  position:relative!important;
+  display:inline-block!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  text-shadow:none!important;
+  background-image:linear-gradient(112deg,#05070d 0%,#10131d 10%,#ff1838 24%,#ff5266 34%,#ffffff 45%,#1d73ff 58%,#7de4ff 70%,#0a0e17 86%,#151a25 100%)!important;
+  background-size:330% 100%!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+}
+.title .official-main::before{
+  content:"Cybersecurity Club & AI"!important;
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  font:inherit!important;
+  line-height:inherit!important;
+  letter-spacing:inherit!important;
+  white-space:inherit!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(112deg,#05070d 0%,#10131d 10%,#ff1838 24%,#ff5266 34%,#ffffff 45%,#1d73ff 58%,#7de4ff 70%,#0a0e17 86%,#151a25 100%)!important;
+  background-size:330% 100%!important;
+  background-position:0% 50%;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  filter:drop-shadow(0 0 38px rgba(42,140,255,.34)) drop-shadow(0 0 28px rgba(255,38,63,.26)) drop-shadow(0 24px 70px rgba(0,0,0,.7))!important;
+  animation:cyberRaptorsMatchFlowFixed 11s cubic-bezier(.45,0,.2,1) infinite!important;
+  pointer-events:none!important;
+  z-index:2!important;
+  will-change:background-position;
+}
+.title .official-main::after{
+  content:none!important;
+  display:none!important;
+  animation:none!important;
+}
+@keyframes cyberRaptorsMatchFlowFixed{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@media (max-width:760px){
+  .title .official-main::before{
+    animation-duration:13s!important;
+    filter:drop-shadow(0 0 24px rgba(42,140,255,.26)) drop-shadow(0 0 18px rgba(255,38,63,.22)) drop-shadow(0 18px 54px rgba(0,0,0,.72))!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="page-shell">
