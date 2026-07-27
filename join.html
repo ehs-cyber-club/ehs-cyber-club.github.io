@@ -5,7 +5,7 @@
 <meta content="SZ4U_KQA8sj1knN3zLmjhIeJ8nTa7uMjgVG-PJIPu98" name="google-site-verification"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Apply to EHS Cybersecurity Club &amp; AI | Cyber Raptors</title>
+<title>Apply | EHS</title>
 <meta content="Apply to Cybersecurity Club & AI at Eaglecrest High School. Cyber Raptors develops defensive-security, AI-system, Linux, CTF, and research-method skills through authorized technical work." name="description"/>
 <meta content="Apply EHS Cybersecurity Club, Eaglecrest Cybersecurity Club application, Cyber Raptors application, Cybersecurity Club and AI, Eaglecrest High School Cybersecurity Club" name="keywords"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
@@ -34,6 +34,12 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
 @keyframes starGlow{0%,100%{filter:brightness(1.35) saturate(1.15)}50%{filter:brightness(3.2) saturate(1.55)}}
 @media (prefers-reduced-motion:no-preference){.panel,.card,.signal-metric{will-change:transform,opacity,filter}.signal-metric:hover,.panel:hover{transform:translateY(-4px);border-color:rgba(121,222,255,.24)}}
 
+</style>
+
+<style id="join-scroll-polish">
+html{scroll-behavior:smooth}
+.reveal,.reveal-scale,.join-aside,.form-card{will-change:transform,opacity}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal-scale,.join-aside,.form-card{will-change:auto}}
 </style>
 </head>
 <body>
@@ -130,9 +136,14 @@ h3{color:#f6f9ff;text-shadow:0 0 20px rgba(42,140,255,.14)}
       });
     }
   }
+  let scrollFrame=0;
+  const scheduleScroll=()=>{
+    if(scrollFrame)return;
+    scrollFrame=requestAnimationFrame(()=>{scrollFrame=0;setScroll();});
+  };
   setScroll();
-  window.addEventListener("scroll",setScroll,{passive:true});
-  window.addEventListener("resize",setScroll,{passive:true});
+  window.addEventListener("scroll",scheduleScroll,{passive:true});
+  window.addEventListener("resize",scheduleScroll,{passive:true});
   if(toggle&&nav){
     toggle.addEventListener("click",()=>{
       const open=nav.classList.toggle("open");
@@ -221,10 +232,6 @@ if(form){
 .ops-card-shell:hover .ops-corner{border-color:rgba(255,255,255,.56)}
 .ops-card-shell h3,.ops-card-shell h2{position:relative}
 .ops-card-shell h3::after,.ops-card-shell h2::after{content:"";display:block;width:72px;max-width:28%;height:2px;margin-top:10px;border-radius:999px;background:linear-gradient(90deg,rgba(255,55,82,.0),rgba(255,55,82,.8),rgba(121,222,255,.85),rgba(121,222,255,0))}
-.ops-badge{position:absolute;top:14px;right:14px;z-index:3;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(5,8,14,.72);backdrop-filter:blur(10px);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,241,252,.76);box-shadow:0 0 24px rgba(0,0,0,.3)}
-[data-ops-theme="offense"] .ops-badge{border-color:rgba(255,55,82,.25);color:rgba(255,209,215,.84)}
-[data-ops-theme="mesh"] .ops-badge{border-color:rgba(121,222,255,.24);color:rgba(208,240,255,.84)}
-[data-ops-theme="target"] .ops-badge{border-color:rgba(255,255,255,.18);color:rgba(240,240,244,.84)}
 #signal-map .signal-card,.signal-card.ops-card-shell{backdrop-filter:blur(18px) saturate(1.15)}
 @keyframes opsGridDrift{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-54px,-54px,0)}}
 @keyframes opsAuraFloat{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(2.5%, -1.5%,0) scale(1.06)}}
@@ -242,7 +249,6 @@ if(form){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const candidates=[...document.querySelectorAll('section, .form-card')].filter(el=>!el.closest('#signal-map .signal-chapter'));
   const themeMap={glance:'analytics',sponsor:'target','actual-work':'offense','why-join':'analytics',program:'offense',ai:'target',meetings:'analytics','signal-map':'offense'};
-  const badges={offense:'OFFENSIVE SYSTEMS',analytics:'TACTICAL ANALYTICS',target:'TARGET ANALYSIS'};
   const themed=[]; let compactCount=0;
   candidates.forEach((section,index)=>{
     if(section.id==='signal-map') return;
@@ -252,9 +258,8 @@ if(form){
     if(!section.querySelector('.ops-aura')){
       const aura=document.createElement('div'); aura.className='ops-aura';
       const auraTwo=document.createElement('div'); auraTwo.className='ops-aura-two';
-      const badge=document.createElement('div'); badge.className='ops-badge'; badge.textContent=badges[theme]||'TACTICAL VISUAL';
       const canvas=document.createElement('canvas'); canvas.className='ops-field-canvas';
-      section.prepend(canvas); section.prepend(auraTwo); section.prepend(aura); section.prepend(badge);
+      section.prepend(canvas); section.prepend(auraTwo); section.prepend(aura);
       themed.push({section,canvas,theme});
     }
   });
