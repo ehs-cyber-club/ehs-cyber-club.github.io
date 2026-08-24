@@ -1,0 +1,110 @@
+.earth-chapter,
+.llm-chapter {
+    z-index: 16
+}
+
+.earth-visual,
+.llm-visual {
+    z-index: 3
+}
+
+@media (max-width:1120px) and (min-width:761px) {
+    .earth-globe-wrap {
+        left: 72% !important;
+        width: min(46vmin, 500px) !important
+    }
+
+    .earth-chapter {
+        left: clamp(20px, 4vw, 52px) !important;
+        width: min(390px, 38vw) !important;
+        padding: 22px 23px !important
+    }
+
+    .earth-chapter h2 {
+        font-size: clamp(2.05rem, 4.35vw, 4.15rem) !important
+    }
+
+    .earth-chapter p {
+        font-size: .94rem;
+        max-width: 42ch
+    }
+
+    .llm-visual {
+        left: 44% !important;
+        right: 1.25% !important
+    }
+
+    .llm-chapter {
+        left: clamp(20px, 4vw, 48px) !important;
+        width: min(350px, 35vw) !important;
+        padding: 21px 22px !important
+    }
+
+    .llm-chapter h2 {
+        font-size: clamp(1.95rem, 4vw, 3.8rem) !important
+    }
+
+    .llm-chapter p {
+        font-size: .92rem
+    }
+}
+
+@media (max-width:760px) {
+
+    .earth-sticky,
+    .llm-sticky {
+        height: 100svh;
+        min-height: 640px
+    }
+
+    .earth-globe-wrap {
+        top: 30% !important;
+        width: min(72vw, 360px) !important
+    }
+
+    .earth-chapter,
+    .llm-chapter {
+        bottom: 56px !important;
+        max-height: 36svh;
+        overflow: hidden
+    }
+
+    .earth-chapter h2,
+    .llm-chapter h2 {
+        font-size: clamp(1.9rem, 9.6vw, 3.25rem) !important
+    }
+
+    .earth-chapter p,
+    .llm-chapter p {
+        -webkit-line-clamp: 3
+    }
+
+    .llm-visual {
+        top: 32% !important;
+        left: 9px !important;
+        right: 9px !important
+    }
+
+    .llm-workbench {
+        max-height: 46svh;
+        overflow: hidden
+    }
+}
+
+@media (max-width:430px) {
+    .earth-globe-wrap {
+        top: 29% !important;
+        width: min(70vw, 320px) !important
+    }
+
+    .earth-chapter,
+    .llm-chapter {
+        left: 9px !important;
+        right: 9px !important;
+        padding: 16px 17px !important
+    }
+
+    .llm-visual {
+        top: 30.5% !important
+    }
+}

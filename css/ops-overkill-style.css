@@ -1,0 +1,262 @@
+.ops-layered {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden
+}
+
+.ops-layered>* {
+    position: relative;
+    z-index: 2
+}
+
+.ops-layered .ops-field-canvas,
+.ops-layered .ops-aura,
+.ops-layered .ops-aura-two {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0
+}
+
+.ops-layered .ops-field-canvas {
+    width: 100%;
+    height: 100%;
+    opacity: .92;
+    border-radius: inherit;
+    mix-blend-mode: screen
+}
+
+.ops-layered .ops-aura {
+    background: radial-gradient(circle at 14% 18%, rgba(255, 55, 82, .18), transparent 23%), radial-gradient(circle at 88% 14%, rgba(121, 222, 255, .16), transparent 24%), radial-gradient(circle at 72% 82%, rgba(255, 55, 82, .10), transparent 22%);
+    filter: blur(10px);
+    animation: opsAuraFloat 18s ease-in-out infinite alternate
+}
+
+.ops-layered .ops-aura-two {
+    background: linear-gradient(140deg, rgba(255, 255, 255, .035), transparent 22%, rgba(42, 140, 255, .05) 46%, transparent 60%, rgba(255, 55, 82, .06) 78%, transparent);
+    mix-blend-mode: screen;
+    opacity: .45;
+    animation: opsVeilShift 20s linear infinite
+}
+
+.ops-layered::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .026) 1px, transparent 1px);
+    background-size: 54px 54px;
+    opacity: .28;
+    mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .7) 12%, rgba(0, 0, 0, .88) 82%, transparent);
+    animation: opsGridDrift 16s linear infinite
+}
+
+.ops-layered::after {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(from 90deg at 50% 50%, transparent 0 18%, rgba(121, 222, 255, .06) 28%, transparent 40%, rgba(255, 55, 82, .08) 58%, transparent 72%, rgba(121, 222, 255, .04) 88%, transparent 100%);
+    opacity: .55;
+    mix-blend-mode: screen;
+    animation: opsSpin 28s linear infinite
+}
+
+.ops-layered[data-ops-theme="offense"] {
+    box-shadow: 0 26px 90px rgba(0, 0, 0, .44), inset 0 1px 0 rgba(255, 255, 255, .07), 0 0 0 1px rgba(255, 55, 82, .12)
+}
+
+.ops-layered[data-ops-theme="mesh"] {
+    box-shadow: 0 26px 90px rgba(0, 0, 0, .42), inset 0 1px 0 rgba(255, 255, 255, .07), 0 0 0 1px rgba(121, 222, 255, .12)
+}
+
+.ops-layered[data-ops-theme="target"] {
+    box-shadow: 0 26px 90px rgba(0, 0, 0, .42), inset 0 1px 0 rgba(255, 255, 255, .07), 0 0 0 1px rgba(255, 255, 255, .08)
+}
+
+.ops-live {
+    animation: opsSectionLift 1s cubic-bezier(.19, 1, .22, 1) both
+}
+
+.ops-card-shell {
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform .32s cubic-bezier(.19, 1, .22, 1), box-shadow .32s ease, border-color .32s ease, background .32s ease;
+    backface-visibility: hidden
+}
+
+.ops-card-shell::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(125deg, transparent 12%, rgba(255, 255, 255, .06) 24%, transparent 35%, rgba(121, 222, 255, .08) 52%, transparent 68%, rgba(255, 55, 82, .12) 82%, transparent 100%);
+    background-size: 240% 100%;
+    background-position: 120% 50%;
+    opacity: .78;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    animation: opsCardSweep 7s linear infinite
+}
+
+.ops-card-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, .08);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .03), inset 0 0 38px rgba(121, 222, 255, .05)
+}
+
+.ops-card-shell:hover {
+    box-shadow: 0 18px 58px rgba(0, 0, 0, .42), 0 0 0 1px rgba(255, 255, 255, .09), 0 0 42px rgba(121, 222, 255, .10), 0 0 28px rgba(255, 55, 82, .10) !important
+}
+
+.ops-card-shell .ops-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(121, 222, 255, .32);
+    pointer-events: none;
+    z-index: 3;
+    opacity: .78
+}
+
+.ops-card-shell .ops-corner.tl {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none
+}
+
+.ops-card-shell .ops-corner.tr {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none
+}
+
+.ops-card-shell .ops-corner.bl {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none
+}
+
+.ops-card-shell .ops-corner.br {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none
+}
+
+.ops-card-shell:hover .ops-corner {
+    border-color: rgba(255, 255, 255, .56)
+}
+
+.ops-card-shell h3,
+.ops-card-shell h2 {
+    position: relative
+}
+
+.ops-card-shell h3::after,
+.ops-card-shell h2::after {
+    content: "";
+    display: block;
+    width: 72px;
+    max-width: 28%;
+    height: 2px;
+    margin-top: 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255, 55, 82, .0), rgba(255, 55, 82, .8), rgba(121, 222, 255, .85), rgba(121, 222, 255, 0))
+}
+
+#signal-map .signal-card,
+.signal-card.ops-card-shell {
+    backdrop-filter: blur(18px) saturate(1.15)
+}
+
+@keyframes opsGridDrift {
+    0% {
+        transform: translate3d(0, 0, 0)
+    }
+
+    100% {
+        transform: translate3d(-54px, -54px, 0)
+    }
+}
+
+@keyframes opsAuraFloat {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1)
+    }
+
+    100% {
+        transform: translate3d(2.5%, -1.5%, 0) scale(1.06)
+    }
+}
+
+@keyframes opsVeilShift {
+    0% {
+        transform: translateX(-8%) rotate(0deg)
+    }
+
+    100% {
+        transform: translateX(8%) rotate(4deg)
+    }
+}
+
+@keyframes opsSpin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes opsCardSweep {
+    0% {
+        background-position: 120% 50%
+    }
+
+    100% {
+        background-position: -120% 50%
+    }
+}
+
+@keyframes opsSectionLift {
+    0% {
+        opacity: 0;
+        transform: translateY(28px) scale(.985)
+    }
+
+    100% {
+        opacity: 1;
+        transform: none
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    .ops-layered::before,
+    .ops-layered::after,
+    .ops-layered .ops-aura,
+    .ops-layered .ops-aura-two,
+    .ops-card-shell::before {
+        animation: none !important
+    }
+
+    .ops-field-canvas {
+        display: none !important
+    }
+
+    .ops-card-shell {
+        transform: none !important
+    }
+}
